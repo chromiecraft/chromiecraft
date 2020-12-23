@@ -1,13 +1,13 @@
 # ChromieCraft.com Community
 
-- **Forum**: https://github.com/chromiecraft/chromiecraft/discussions
+- **Forum**: [LINK](https://github.com/chromiecraft/chromiecraft/discussions)
 
 ## Bug reports
 
 Users can report bugs using the ChromieCraft bug-tracker
 
-- **ChromieCraft Bug reports**: https://github.com/chromiecraft/chromiecraft/issues
-- **Create new bug report**: https://github.com/chromiecraft/chromiecraft/issues/new
+- **ChromieCraft Bug reports**: [LINK](https://github.com/chromiecraft/chromiecraft/issues)
+- **Create new bug report**: [LINK](https://github.com/chromiecraft/chromiecraft/issues/new)
 
 It is then duty of the [AzerothCore](https://www.azerothcore.org/) contributors, or anyone in general that wants to contribute with the ChromieCraft project, to:
 
@@ -15,9 +15,9 @@ It is then duty of the [AzerothCore](https://www.azerothcore.org/) contributors,
 
 - Report directly to the AC repo any bugs that you find by yourself applying the same label.
 
-**Project by Brackets:** https://github.com/azerothcore/azerothcore-wotlk/projects - Here you can find the projects subdivided by brackets to check the status of the technical progression
+**Project by Brackets:** [LINK](https://github.com/azerothcore/azerothcore-wotlk/projects) - Here you can find the projects subdivided by brackets to check the status of the technical progression
 
-**AzerothCore bugtracker:** https://github.com/azerothcore/azerothcore-wotlk/issues - This is the official bugtracker of our gaming core
+**AzerothCore bugtracker:** [LINK](https://github.com/azerothcore/azerothcore-wotlk/issues) - This is the official bugtracker of our gaming core
  
 
 
