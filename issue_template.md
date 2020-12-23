@@ -1,4 +1,4 @@
-<!-- IF YOU DO NOT FILL THIS TEMPLATE OUT, WE WILL CLOSE YOUR ISSUE! -->
+<!-- IF YOU DO NOT FILL THIS TEMPLATE OUT, THE ISSUE WILL BE CLOSED -->
 
 ##### SMALL DESCRIPTION:
 <!-- Add a one line description of the bug -->
@@ -25,6 +25,52 @@
 2. 
 3. 
 
+
+<!------------------------------------------------------------------->
+<!------------------------------------------------------------------->
+<!------------------------------------------------------------------->
+<!------------------------------------------------------------------->
+<!------------------------------------------------------------------->
+<!------------------ DO NOT MODIFY THE TEXT BELOW ------------------->
+<!------------------------------------------------------------------->
+<!------------------------------------------------------------------->
+<!------------------------------------------------------------------->
+<!------------------------------------------------------------------->
+<!------------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##### AC HASH/COMMIT:
-<!-- DO NOT MODIFY OR DELETE THIS -->
+
 https://github.com/azerothcore/azerothcore-wotlk/commit/38bf355bf479
+
+##### OPERATING SYSTEM:
+
+Ubuntu 20.04
+
+##### MODULES:
+
+- [mod-cfbg](https://github.com/azerothcore/mod-cfbg)
+- [mod-duel-reset](https://github.com/azerothcore/mod-duel-reset)
+
+##### OTHER CUSTOMIZATIONS:
+
+None.
+
+##### SERVER:
+
+ChromieCraft
+
