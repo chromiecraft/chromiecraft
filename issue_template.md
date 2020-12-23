@@ -1,4 +1,4 @@
-<!-- IF YOU DO NOT FILL THIS TEMPLATE OUT, WE WILL CLOSE YOUR ISSUE! -->
+<!-- IF YOU DO NOT FILL THIS TEMPLATE OUT, THE ISSUE WILL BE CLOSED -->
 
 ##### SMALL DESCRIPTION:
 <!-- Add a one line description of the bug -->
@@ -61,34 +61,16 @@ https://github.com/azerothcore/azerothcore-wotlk/commit/38bf355bf479
 
 Ubuntu 20.04
 
-
-
 ##### MODULES:
 
 - [mod-cfbg](https://github.com/azerothcore/mod-cfbg)
 - [mod-duel-reset](https://github.com/azerothcore/mod-duel-reset)
 
-
-
 ##### OTHER CUSTOMIZATIONS:
-<!-- Are you using any extra script?
- - Did you apply any core patch/diff?
- - Did you modify your database?
- - Or do you have other customizations? If yes please specify them here.
--->
 
 None.
 
+##### SERVER:
 
-<!-- ------------------------- THE END ------------------------------
-Thank you for your contribution.
-If you use AzerothCore regularly, we really NEED your help to:
- - TEST our fixes ( http://www.azerothcore.org/wiki/Contribute#how-to-test-a-pull-request )
- - Report issues
- - Improve the documentation/wiki
-With your help the project can evolve much quicker!
--->
+ChromieCraft
 
-
-<!-- NOTE: If you intend to contribute more than once, you should really join us on our discord channel! We set cosmetic ranks for our contributors and may give access to special resources/knowledge to them! The link is on our site http://azerothcore.org/
--->
