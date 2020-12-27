@@ -13,7 +13,7 @@ It is then duty of the [AzerothCore](https://www.azerothcore.org/) contributors,
 
 - Verify the issues reported by the users (check validity, duplicates, etc...). If they are valid, open a report on the AC main repo, add the [[1-19]](https://github.com/azerothcore/azerothcore-wotlk/labels/1-19) label and link the original issue to it.
 
-- Report directly to the AC repo any bugs that you find by yourself applying the same label.
+- Report directly to the AC repo any bugs that you find by yourself applying the same label. You can copy paste [this template](https://raw.githubusercontent.com/chromiecraft/chromiecraft/main/issue_template.md) and just fill the bug description.
 
 **Project by Brackets:** [LINK](https://github.com/azerothcore/azerothcore-wotlk/projects) - Here you can find the projects subdivided by brackets to check the status of the technical progression
 
