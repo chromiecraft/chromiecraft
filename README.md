@@ -1,6 +1,7 @@
 # ChromieCraft.com Community
 
-- **Forum**: [LINK](https://github.com/chromiecraft/chromiecraft/discussions)
+- [**Website**](http://chromiecraft.com/)
+- [**Forum**](https://github.com/chromiecraft/chromiecraft/discussions)
 
 ## Bug reports
 
