@@ -55,7 +55,7 @@
 
 ##### AC HASH/COMMIT:
 
-https://github.com/azerothcore/azerothcore-wotlk/commit/6414b40518da
+https://github.com/azerothcore/azerothcore-wotlk/commit/79aa5606547d
 
 ##### OPERATING SYSTEM:
 
