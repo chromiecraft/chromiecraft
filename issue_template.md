@@ -55,7 +55,7 @@
 
 ##### AC HASH/COMMIT:
 
-https://github.com/chromiecraft/azerothcore-wotlk/commit/20afed08c95
+https://github.com/chromiecraft/azerothcore-wotlk/commit/df600f9946c
 
 ##### OPERATING SYSTEM:
 
