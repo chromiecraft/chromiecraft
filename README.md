@@ -23,7 +23,9 @@ It is duty of the [AzerothCore](https://www.azerothcore.org/) contributors, or a
 
 4) On the issues reported in the AC repo, it's needed to add the proper label, for example [[1-19]](https://github.com/azerothcore/azerothcore-wotlk/labels/1-19).
 
-5) On the issues reported on the ChromieCraft repo, mark them as LINKED adding the proper tag. From time to time we'll need to close the linked issues that have been fixed.
+5) On the issues reported on the ChromieCraft repo, mark them as LINKED adding the proper tag. Once the linked issue on AC has been closed, we can add FIX-READY to the ChromieCraft report.
+
+6) Admins will close all FIX-READY marked issues as soon as ChromieCraft gets updated with the latest AC
 
 ### Report
 
