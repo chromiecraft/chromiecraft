@@ -14,6 +14,9 @@
 <!-- Describe the bug in detail. Database to link spells, NPCs, quests etc https://wowgaming.altervista.org/aowow/ -->
 
 
+##### CONTENT PHASE
+<!-- Specify the content phase where this bug belongs to, for example "1-19" or "20-29", etc... -->
+
 
 ##### STEPS TO REPRODUCE THE PROBLEM:
 <!-- Describe precisely how to reproduce the bug so we can fix it or confirm its existence:
