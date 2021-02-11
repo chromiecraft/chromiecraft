@@ -13,7 +13,8 @@
 <!-- NPC_Start: [Name Npc Quest Starter](Link NPC from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
 <!-- NPC_End: [Name Npc Quest End](Link NPC from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
 
-<!-- NPC: [Quest Name](Link NPC from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
+<!-- NPC: [NPC Name](Link NPC from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
+<!-- Spell: [Spell Name](Link Spell from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
 <!-- Item: [Item Name](Link Item from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
 <!-- GameObject: [GameObject Name](Link GameObject from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
 <!-- Zone: [Zone Name](Link Zone from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
@@ -31,7 +32,7 @@
 <!-- NPC_Start: [Name Npc Quest Starter](Link NPC from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
 <!-- NPC_End: [Name Npc Quest End](Link NPC from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
 
-<!-- NPC: [Quest Name](Link NPC from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
+<!-- NPC: [NPC Name](Link NPC from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
 <!-- Spell: [Spell Name](Link Spell from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
 <!-- Item: [Item Name](Link Item from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
 <!-- GameObject: [GameObject Name](Link GameObject from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
