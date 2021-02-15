@@ -1,0 +1,15 @@
+name: discord-issue-linked
+on:
+  issues:
+    types: [labeled]
+jobs:
+  discord-issue-linked:
+    if: ${{ github.event.label.name == "Linked [AC]" }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'The user {{ EVENT_PAYLOAD.sender.login }} has linked the issue {{ EVENT_PAYLOAD.issue.title }} to the AC Repo'
