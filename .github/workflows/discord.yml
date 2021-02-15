@@ -4,7 +4,7 @@ on:
     types: [labeled]
 jobs:
   discord-issue-linked:
-    if: ${{ github.event.label.name == "Linked [AC]" }}
+    if: ${{ github.event.label.name == 'Linked [AC]' }}
     runs-on: ubuntu-latest
     steps:
       - name: Discord notification
