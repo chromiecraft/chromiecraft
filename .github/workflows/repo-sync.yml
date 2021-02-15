@@ -12,6 +12,6 @@ jobs:
       uses: wei/git-sync@v2
       with:
         source_repo: "https://github.com/chromiecraft/chromiecraft.git"
-        source_branch: "master"
+        source_branch: "main"
         destination_repo: "https://${{ github.repository_owner }}:${{ github.token }}@github.com/${{ github.repository }}.git"
         destination_branch: "main"
