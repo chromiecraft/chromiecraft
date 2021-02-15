@@ -1,0 +1,17 @@
+name: repo-sync
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 0"
+jobs:
+  cc-repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: cc-repo-sync
+      uses: wei/git-sync@v2
+      with:
+        source_repo: "https://github.com/chromiecraft/chromiecraft.git"
+        source_branch: "main"
+        destination_repo: "https://${{ github.repository_owner }}:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git"
+        destination_branch: "main"
