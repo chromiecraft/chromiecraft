@@ -13,5 +13,6 @@ jobs:
       with:
         source_repo: "https://github.com/chromiecraft/chromiecraft.git"
         source_branch: "master"
-        destination_repo: "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+        destination_repo: "https://github.com/${{ github.repository }}.git"
         destination_branch: "main"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
