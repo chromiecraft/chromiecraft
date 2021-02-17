@@ -1,4 +1,9 @@
 <!-- IF YOU DO NOT FILL THIS TEMPLATE OUT, THE ISSUE WILL BE CLOSED -->
+##### Issue: Faction Side:
+<!-- Specify to which type of Faction the problem in question belongs (and I don't mean which Character you encountered the problem with if Horde or Alliance, I mean if the Problem is specific to the faction, For example: There may be a quest that is the same for both Horde that for Alliance, only that maybe that Horde works and that Alliance doesn't, so indicate to which faction the problem belongs through these 2 Images, you only need to delete the following symbols from the line <!- -> leaving the link of of interest in this way:  "![image](https://user-images.githubusercontent.com/1884642/108204869-3a88d100-711c-11eb-8179-e1b9b73ed450.png)" (Without quotes) -->
+
+<!--Alliance ![image](https://user-images.githubusercontent.com/1884642/108204869-3a88d100-711c-11eb-8179-e1b9b73ed450.png)-->
+<!--Horde ![image](https://user-images.githubusercontent.com/1884642/108204991-63a96180-711c-11eb-9ed9-138c233070a6.png)-->
 
 ##### CONTENT PHASE:
 <!-- Specify the content phase where this bug belongs to, for example "1-19" or "20-29", etc... -->
