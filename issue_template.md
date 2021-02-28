@@ -138,7 +138,7 @@ Step 3
 
 ##### AC HASH/COMMIT:
 
-https://github.com/chromiecraft/azerothcore-wotlk/commit/7ec204943a3080071e0f1d7b7d18e10cbc4d1918
+https://github.com/chromiecraft/azerothcore-wotlk/commit/c2f274e06dcf85c6ccc0ab282dd6f23e8ce49c8f
 
 ##### OPERATING SYSTEM:
 
