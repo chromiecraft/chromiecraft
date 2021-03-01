@@ -149,6 +149,7 @@ Ubuntu 20.04
 - [mod-cfbg](https://github.com/azerothcore/mod-cfbg)
 - [mod-duel-reset](https://github.com/azerothcore/mod-duel-reset)
 - [mod-desertion-warnings](https://github.com/azerothcore/mod-desertion-warnings)
+- [mod-ah-bot](https://github.com/azerothcore/mod-ah-bot)
 
 ##### OTHER CUSTOMIZATIONS:
 
