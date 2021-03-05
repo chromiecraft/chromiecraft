@@ -49,9 +49,7 @@ author_json () {
   AUTHORS=$(cat test.json| jq -r '.author' | sort | uniq -c | awk -F " " '{print "{\"author\":""\""$2"\""",\"count\":" $1"}"}' | jq -r .author)
     for AUTHOR in ${AUTHORS}; do
     TEST_PAYLOAD=$(cat test.json| jq -r '.author' | sort | uniq -c | awk -F " " '{print "{\"author\":""\""$2"\""",\"count\":" $1"}"}' | jq -r .)
-    #echo $AUTHOR
     TEST_PAYLOAD_AUTHOR=$(echo "$TEST_PAYLOAD" | jq -r --arg AUTHOR "${AUTHOR}" 'select(.author==$AUTHOR) | .author')
-    #echo $TEST_PAYLOAD_AUTHOR
     TEST_PAYLOAD_AUTHOR_COUNT=$(echo "$TEST_PAYLOAD" | jq -r --arg AUTHOR "${AUTHOR}" 'select(.author==$AUTHOR) | .count')
     echo -e "Issue Author: ${TEST_PAYLOAD_AUTHOR}\nCount: ${TEST_PAYLOAD_AUTHOR_COUNT}"
     done
@@ -61,9 +59,7 @@ contributor_json () {
   CONTRIBUTORS=$(cat test.json| jq -r '.contributor' | sort | uniq -c | awk -F " " '{print "{\"contributor\":""\""$2"\""",\"count\":" $1"}"}' | jq -r .contributor)
     for CONTRIBUTOR in ${CONTRIBUTORS}; do
     TEST_PAYLOAD=$(cat test.json| jq -r '.contributor' | sort | uniq -c | awk -F " " '{print "{\"contributor\":""\""$2"\""",\"count\":" $1"}"}' | jq -r .)
-    #echo $AUTHOR
     TEST_PAYLOAD_CONTRIBUTOR=$(echo "$TEST_PAYLOAD" | jq -r --arg CONTRIBUTOR "${CONTRIBUTOR}" 'select(.contributor==$CONTRIBUTOR) | .contributor')
-    #echo $TEST_PAYLOAD_AUTHOR
     TEST_PAYLOAD_CONTRIBUTOR_COUNT=$(echo "$TEST_PAYLOAD" | jq -r --arg CONTRIBUTOR "${CONTRIBUTOR}" 'select(.contributor==$CONTRIBUTOR) | .count')
     echo -e "Issue Contributor: ${TEST_PAYLOAD_CONTRIBUTOR}\nCount: ${TEST_PAYLOAD_CONTRIBUTOR_COUNT}"
     done
