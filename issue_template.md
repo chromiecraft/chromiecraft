@@ -34,7 +34,7 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________________________________________________
 3a) Add a small description.
 3b) Add links to point to the quest/NPCs/spells/items/... related to your problem.
-Delete the "<!--" symbols at the beginning and at the end according to the field you need, you can ignore the others.
+Delete the "<!--" symbols at the beginning and at the end according to the field you need, please ignore the others.
 ________________________________________________________________________________________________________________________________________
 ________________________________________________________________________________________________________________________________________
 -->
