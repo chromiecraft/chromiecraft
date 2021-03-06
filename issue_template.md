@@ -5,7 +5,7 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________________________________________________
 Guide to issues:
  - Text in between <!-- and --> is not visible. It serves to guide you through the blueprint. Leave it as is.
-1) Specify to which type of Faction the problem in question belongs. If the issue can happen on only one faction, remove the arrows before and
+1) Specify to which type of Faction the problem in question belongs. If the issue can happen to only one faction, remove the arrows before and
 after that faction's name below. If the issue CAN happen on both sides, remove both arrows.
 ________________________________________________________________________________________________________________________________________
 ________________________________________________________________________________________________________________________________________
@@ -133,4 +133,3 @@ None.
 ##### SERVER:
 
 ChromieCraft
-
