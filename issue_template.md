@@ -3,17 +3,13 @@
 <!--
 ________________________________________________________________________________________________________________________________________
 ________________________________________________________________________________________________________________________________________
-Specify to which type of Faction the problem in question belongs
-(and I don't mean which Character you encountered the problem with if Horde or Alliance, I mean if the Problem is specific to the faction),
-For example:
-There may be a quest that is the same for both Horde that for Alliance, but that maybe that of Horde works and that Alliance doesn't,
-so indicate to which faction the problem belongs through these 2 Images, you need to delete ONLY the relates symbols:
-from the line <!- -> leaving the link of of interest in this way:
-" ![image](https://user-images.githubusercontent.com/1884642/108204869-3a88d100-711c-11eb-8179-e1b9b73ed450.png) " (Without quotes)
+Guide to issues:
+ - Text in between <!-- and --> is not visible. It serves to guide you through the blueprint. Leave it as is.
+1) Specify to which type of Faction the problem in question belongs. If the issue can happen to only one faction, remove the arrows before and
+after that faction's name below. If the issue CAN happen on both sides, remove both arrows.
 ________________________________________________________________________________________________________________________________________
 ________________________________________________________________________________________________________________________________________
 -->
-<!-- P.S: The words "Alliance" and "Horde" (are a reference for you, to make you understand which image you need if the problem concerns both factions put both images) -->
 <!-- EDIT FROM THIS POINT DOWN ONLY -->
 
 <!-- ![Alliance](https://user-images.githubusercontent.com/1884642/108204869-3a88d100-711c-11eb-8179-e1b9b73ed450.png)-->
@@ -24,7 +20,7 @@ ________________________________________________________________________________
 <!--
 ________________________________________________________________________________________________________________________________________
 ________________________________________________________________________________________________________________________________________
-Specify the content phase where this bug belongs to, for example "1-19" or "20-29", etc...
+2) Specify the content phase where this bug belongs to, for example "1-19" or "20-29", etc...
 ________________________________________________________________________________________________________________________________________
 ________________________________________________________________________________________________________________________________________
 -->
@@ -36,19 +32,11 @@ ________________________________________________________________________________
 <!--
 ________________________________________________________________________________________________________________________________________
 ________________________________________________________________________________________________________________________________________
-Add a bug description line, then fill in the required fields for your problem (based on the needs of your problem)
-Delete the "<!--" symbols at the beginning and at the end according to the field you need, the fields you don't need to fill ignore them.
+3a) Add a small description.
+3b) Add links to point to the quest/NPCs/spells/items/... related to your problem.
+Delete the "<!--" symbols at the beginning and at the end according to the field you need, please ignore the others.
 ________________________________________________________________________________________________________________________________________
 ________________________________________________________________________________________________________________________________________
-EXAMPLE OF HOW TO EDIT:
-[INSIDE THE SQUARE PARENTHESES YOU MUST PUT THE NAME OF THE QUEST/NPC/SPELL/ETC](INSIDE THE ROUND BRACKETS YOU MUST PUT THE LINK)
--->
-<!--
-_____________________________
-SECTION RELATED TO QUEST:   |
-QUEST, NPC GIVING THE QUEST,|
-NPC TO DELIVER THE QUEST.   |
-____________________________|
 -->
 <!-- WRITE/EDIT FROM THIS POINT DOWN ONLY -->
 
@@ -58,12 +46,6 @@ ____________________________|
 
 
 
-<!--
-_____________________________
-SECTION RELATING TO NPC,    |
-SPELL, ITEMS, ADDITIONALS   |
-____________________________|
--->
 <!-- WRITE/EDIT FROM THIS POINT DOWN ONLY -->
 
 <!-- NPC: [NPC Name](Link NPC from Wowhead or Other DB Link such https://wowgaming.altervista.org/aowow/) -->
@@ -78,7 +60,7 @@ ____________________________|
 <!--
 ________________________________________________________________________________________________________________________________________
 ________________________________________________________________________________________________________________________________________
-Describe how it should be working without the bug.
+4) Describe how it should be working without the bug.
 ________________________________________________________________________________________________________________________________________
 ________________________________________________________________________________________________________________________________________
 -->
@@ -121,19 +103,12 @@ Step 3
 
 
 
-
-
-<!------------------------------------------------------------------->
-<!------------------------------------------------------------------->
-<!------------------------------------------------------------------->
 <!------------------------------------------------------------------->
 <!------------------------------------------------------------------->
 <!------------------ DO NOT MODIFY THE TEXT BELOW ------------------->
 <!------------------------------------------------------------------->
 <!------------------------------------------------------------------->
-<!------------------------------------------------------------------->
-<!------------------------------------------------------------------->
-<!------------------------------------------------------------------->
+
 
 
 ##### AC HASH/COMMIT:
@@ -158,4 +133,3 @@ None.
 ##### SERVER:
 
 ChromieCraft
-
