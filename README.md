@@ -13,7 +13,7 @@
 
 ### Triage
 
-It is the duty of the [AzerothCore](https://www.azerothcore.org/) contributors, or anyone in general who wants to contribute to the ChromieCraft project, to:
+It is the duty of [AzerothCore](https://www.azerothcore.org/) contributors, or anyone in general who wants to contribute to the ChromieCraft project, to:
 
 1. Verify the issues reported by the users (check validity, duplicates, etc.). All issues waiting to be triaged are marked as [[needs triage]](https://github.com/chromiecraft/chromiecraft/issues?q=is%3Aissue+is%3Aopen+label%3A%22needs+triage%22).
 
