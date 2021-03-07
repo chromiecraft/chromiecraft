@@ -1,39 +1,38 @@
-# ChromieCraft.com Bugtracker
+# ChromieCraft.com Bug Tracker
 
-## FOR PLAYERS: how to report bugs
+## FOR PLAYERS: How to report bugs
 
-1) Check the [bug list](https://github.com/chromiecraft/chromiecraft/issues) and see if the bug has already been reported. If yes, open the report and write a comment "confirmed".
+1. Check the [bug list](https://github.com/chromiecraft/chromiecraft/issues) to see if the bug has already been reported. If yes, open the matching report and add your comment with "Confirmed". If possible, please add your core revision hash and a note telling us if this is your own local server or an online AC server).
 
-2) If the bug has not been reported yet, please [create a new one](https://github.com/chromiecraft/chromiecraft/issues/new). Please fill all the requested details.
+2. If the bug has not been reported yet, please [create a new ticket](https://github.com/chromiecraft/chromiecraft/issues/new). Please fill in all of the requested details.
 
-- **ChromieCraft Bug reports**: [LINK](https://github.com/chromiecraft/chromiecraft/issues)
-- **Create new bug report**: [LINK](https://github.com/chromiecraft/chromiecraft/issues/new)
+- [**ChromieCraft issue tickets**](https://github.com/chromiecraft/chromiecraft/issues) : The complete list of currently reported issues (bugs).
+- [**Create a new issue ticket**](https://github.com/chromiecraft/chromiecraft/issues/new) : Open a new ticket page to fill in the required information.
 
-## FOR CONTRIBUTORS: how to triage/report bugs
+## FOR CONTRIBUTORS: How to triage/report bugs
 
 ### Triage
 
-It is duty of the [AzerothCore](https://www.azerothcore.org/) contributors, or anyone in general that wants to contribute with the ChromieCraft project, to:
+It is the duty of the [AzerothCore](https://www.azerothcore.org/) contributors, or anyone in general who wants to contribute to the ChromieCraft project, to:
 
-1) Verify the issues reported by the users (check validity, duplicates, etc...). All issues awaiting to be triaged are marked as [[needs triage]](https://github.com/chromiecraft/chromiecraft/issues?q=is%3Aissue+is%3Aopen+label%3A%22needs+triage%22).
+1. Verify the issues reported by the users (check validity, duplicates, etc.). All issues waiting to be triaged are marked as [[needs triage]](https://github.com/chromiecraft/chromiecraft/issues?q=is%3Aissue+is%3Aopen+label%3A%22needs+triage%22).
 
-2) If the issue is not valid (missing information, not a bug, etc...) it should be closed (or ask the user for clarification).
+2. If the issue is not valid (missing information, not a bug, etc.), it should be closed (or you can ask the user for further clarification).
 
-3) If the issue is valid and the bug can be reproduced on a clean AC server (at a recent version), it's needed to open a report on the [main AC repo](https://github.com/azerothcore/azerothcore-wotlk/issues). You can literally copy-paste the issue from ChromieCraft to AzerothCore, as the template already contains all information needed for AC. In addition, add the link of the original issue reported on ChromieCraft ("Originally reported LINK-TO-CHROMIECRAFT-ISSUE"). This way GitHub will automatically link the two reports.
+3. If the issue is valid and the bug can be reproduced on a clean AC server (at a recent version), open a report in the [main AC repo issue tracker](https://github.com/azerothcore/azerothcore-wotlk/issues). You can literally copy-paste the issue from ChromieCraft to AzerothCore, as the template already contains all information needed for AC. In addition, add the link to the original issue reported to ChromieCraft ("Originally reported LINK-TO-CHROMIECRAFT-ISSUE"). GitHub will automatically link the two reports.
 
-4) On the issues reported in the AC repo, it's needed to add the proper label, for example [[1-19]](https://github.com/azerothcore/azerothcore-wotlk/labels/1-19).
+4. Add the correct level bracket tag to the AC issue tracker ticket report, for example [[1-19]](https://github.com/azerothcore/azerothcore-wotlk/labels/1-19).
 
-5) On the issues reported on the ChromieCraft repo, mark them as LINKED adding the proper tag. Once the linked issue on AC has been closed, we can add FIX-READY to the ChromieCraft report.
+5. In the issue ticket reported in the ChromieCraft repo, mark them as LINKED by adding the proper label. Once the linked issue on AC has been closed, we can add the FIX-READY label to the ChromieCraft report.
 
-6) Admins will close all FIX-READY marked issues as soon as ChromieCraft gets updated with the latest AC
+6. Admins will close all issues labeled FIX-READY, as soon as ChromieCraft gets updated with the latest AC build.
 
 ### Report
 
-If you find a bug yourself, you can report directly to the AC repo. You can copy paste [this template](https://raw.githubusercontent.com/chromiecraft/chromiecraft/main/issue_template.md) and just fill the bug description.
+If you find a bug yourself, you can report it directly to the AC issue tracker. You can copy-paste [this template](https://raw.githubusercontent.com/chromiecraft/chromiecraft/main/issue_template.md) and simply fill in the bug description.
 
 ### Links
 
-**Project by Brackets:** [LINK](https://github.com/azerothcore/azerothcore-wotlk/projects) - Here you can find the projects subdivided by brackets to check the status of the technical progression
+[**Project by Brackets**](https://github.com/azerothcore/azerothcore-wotlk/projects) : The projects, subdivided by brackets. Allows you to check the technical progress status.
 
-**AzerothCore bugtracker:** [LINK](https://github.com/azerothcore/azerothcore-wotlk/issues) - This is the official bugtracker of our gaming core
- 
+[**AzerothCore issue tracker**](https://github.com/azerothcore/azerothcore-wotlk/issues) : This is our official gaming core issue tracker.
