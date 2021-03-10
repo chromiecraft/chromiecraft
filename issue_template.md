@@ -125,6 +125,8 @@ Ubuntu 20.04
 - [mod-duel-reset](https://github.com/azerothcore/mod-duel-reset)
 - [mod-desertion-warnings](https://github.com/azerothcore/mod-desertion-warnings)
 - [mod-ah-bot](https://github.com/azerothcore/mod-ah-bot)
+- [mod-eluna-lua-engine](https://github.com/azerothcore/mod-eluna-lua-engine)
+- [lua-LevelUpReward](https://github.com/55Honey/Acore_LevelUpReward)
 
 ##### OTHER CUSTOMIZATIONS:
 
