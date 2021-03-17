@@ -10,6 +10,21 @@
 
 <!-- YOU CAN DRAG AND DROP IMAGES AND CONTROL-V SCREENSHOTS INTO THIS REPORT -->
 
+##### FACTION
+
+<!-- AFTER YOU OPEN THE BUG REPORT, SELECT YOUR FACTION  -->
+
+- [ ] Alliance
+- [ ] Horde
+
+##### CONTENT PHASE:
+
+<!-- AFTER YOU OPEN THE BUG REPORT, SELECT THE CONTENT PHASE (OR SELECT GENERIC) -->
+
+- [ ] Generic
+- [ ] 1-19
+- [ ] 20-29
+- [ ] 30-39
 
 ##### CURRENT BEHAVIOUR:
 <!-- Describe the bug in detail. Database to link spells, NPCs, quests etc https://wowgaming.altervista.org/aowow/ -->
