@@ -1,7 +1,5 @@
 
 
-
-
 <!-- IF YOU DO NOT FILL THIS TEMPLATE OUT, WE WILL CLOSE YOUR ISSUE! -->
 
 <!-- TYPE WHERE IT SAYS TYPE HERE -->
@@ -9,6 +7,10 @@
 <!-- WRITE A RELEVANT TITLE -->
 
 <!-- YOU CAN DRAG AND DROP IMAGES AND CONTROL-V SCREENSHOTS INTO THIS REPORT -->
+
+<!-- ATTENTION: WRITE ACCURATE REPORTS THAT INCLUDE VALID SOURCES -->
+<!-- Example of an INVALID report: "this value is too low, we should increase it"  -->
+<!-- Example of a VALID report: "this value is X but it should be Y instead as explained in this link/video"  -->
 
 ##### FACTION
 
