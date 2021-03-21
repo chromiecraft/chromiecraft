@@ -81,7 +81,7 @@ Thank you for your report. Please click submit new issue below.
 
 ##### AC HASH/COMMIT:
 
-https://github.com/chromiecraft/azerothcore-wotlk/commit/a32310772487a7a547b1a239dfaf0967b19f7493
+https://github.com/chromiecraft/azerothcore-wotlk/commit/8bacb39d53349f63066e84bcddb5a7f9300acb0d
 
 ##### OPERATING SYSTEM:
 
