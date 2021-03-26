@@ -1,16 +1,27 @@
+<!--
+BEFORE you fill out an issue, make these checks:
 
+- make sure you use an enUS client. We will just close your issue if you use enGB.
+- close wow, clear your cache by deleting the CACHE folder in you wow directory, try to reproduce the bug
+- if you have a suggestion, like increasing despawn timers, this is not an issue. Tell us in #suggestions on discord instead.
 
-<!-- IF YOU DO NOT FILL THIS TEMPLATE OUT, WE WILL CLOSE YOUR ISSUE! -->
+<!-- IF YOU DO NOT FILL OUT THIS TEMPLATE, WE WILL CLOSE YOUR ISSUE! -->
 
-<!-- TYPE WHERE IT SAYS TYPE HERE -->
+<!-- TYPE WHERE IT SAYS "TYPE HERE" -->
 
 <!-- WRITE A RELEVANT TITLE -->
 
-<!-- YOU CAN DRAG AND DROP IMAGES AND CONTROL-V SCREENSHOTS INTO THIS REPORT -->
+<!-- YOU CAN DRAG AND DROP IMAGES AND CONTROL-V SCREENSHOTS/VIDEOS INTO THIS REPORT -->
 
 <!-- ATTENTION: WRITE ACCURATE REPORTS THAT INCLUDE VALID SOURCES -->
 <!-- Example of an INVALID report: "this value is too low, we should increase it"  -->
 <!-- Example of a VALID report: "this value is X but it should be Y instead as explained in this link/video"  -->
+#### WHAT CLIENT DO YOU PLAY ON?
+
+- [ ] enGB
+- [ ] enUS
+- [ ] other (specify)
+
 
 ##### FACTION
 
@@ -29,7 +40,7 @@
 - [ ] 30-39
 
 ##### CURRENT BEHAVIOUR:
-<!-- Describe the bug in detail. Database to link spells, NPCs, quests etc https://wowgaming.altervista.org/aowow/ -->
+<!-- Describe the bug in detail. Database to link spells, NPCs, quests etc: https://wowgaming.altervista.org/aowow/ -->
 
 Type here.
 
@@ -48,6 +59,7 @@ Type here.
  - Do we need to have debug flags on Cmake?
  - Do we need to look at the console while the bug happens?
  - Other steps
+ - Use the ingame commands to identify the unique GUID of an ore/herb/npc:    .npc info  /  .gobject near
 -->
 
 1. 
@@ -69,14 +81,14 @@ Type here.
 
 
 
-Thank you for your report. Please click submit new issue below.
+<!--Thank you for your report. Please click submit new issue below.-->
+<!-----------Remember to tick all relevant boxes when done!---------->
 
 <!------------------------------------------------------------------->
 <!------------------------------------------------------------------->
 <!------------------ DO NOT MODIFY THE TEXT BELOW ------------------->
 <!------------------------------------------------------------------->
 <!------------------------------------------------------------------->
-
 
 
 ##### AC HASH/COMMIT:
