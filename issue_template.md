@@ -1,7 +1,7 @@
 <!--
 BEFORE you fill out an issue, make these checks:
 
-- make sure you use an enUS client. We will just close you issue if you use enGB.
+- make sure you use an enUS client. We will just close your issue if you use enGB.
 - close wow, clear your cache by deleting the CACHE folder in you wow directory, try to reproduce the bug
 - if you have a suggestion, like increasing despawn timers, this is not an issue. Tell us in #suggestions on discord instead.
 
