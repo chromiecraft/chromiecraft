@@ -107,6 +107,7 @@ Ubuntu 20.04
 - [mod-ah-bot](https://github.com/azerothcore/mod-ah-bot)
 - [mod-eluna-lua-engine](https://github.com/azerothcore/mod-eluna-lua-engine)
 - [lua-LevelUpReward](https://github.com/55Honey/Acore_LevelUpReward)
+- [lua-CarbonCopy](https://github.com/55Honey/Acore_CarbonCopy)
 
 ##### OTHER CUSTOMIZATIONS:
 
