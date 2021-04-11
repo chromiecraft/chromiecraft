@@ -38,6 +38,8 @@ BEFORE you fill out an issue, make these checks:
 - [ ] 1-19
 - [ ] 20-29
 - [ ] 30-39
+- [ ] 40-49
+- [ ] 50-59
 
 ##### CURRENT BEHAVIOUR:
 <!-- Describe the bug in detail. Database to link spells, NPCs, quests etc: https://wowgaming.altervista.org/aowow/ -->
