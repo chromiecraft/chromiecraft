@@ -111,6 +111,7 @@ Ubuntu 20.04
 - [mod-server-auto-shutdown](https://github.com/azerothcore/mod-server-auto-shutdown)
 - [lua-LevelUpReward](https://github.com/55Honey/Acore_LevelUpReward)
 - [lua-CarbonCopy](https://github.com/55Honey/Acore_CarbonCopy)
+- [mod-pvp-titles](https://github.com/azerothcore/mod-pvp-titles)
 
 ##### OTHER CUSTOMIZATIONS:
 
