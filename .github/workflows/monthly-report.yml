@@ -67,33 +67,7 @@ jobs:
             echo -e "**Issue Contributor:** ${TEST_PAYLOAD_CONTRIBUTOR} **Count:** ${TEST_PAYLOAD_CONTRIBUTOR_COUNT}"
             done | sort -n -k 5,5 -r >> output.txt
 
-      # - name: Set json
-      #   id: json
-      #   run: |
-      #     # Template json to send as an embed
-      #     # jq replaces $var with `jq --arg var <value> "$TEMPLATE"`
-      #     TEMPLATE='[{
-      #        "title": $title,
-      #        "color": $color,
-      #        "description": $desc,
-      #        "fields": [
-      #          {
-      #            "name": $field_name,
-      #            "value": $field_value
-      #          },
-      #          {
-      #            "name": $field_name2,
-      #            "value": $field_value2
-      #          }
-      #         ]
-      #        }]'
-
-      #     echo "DISCORD_EMBEDS=$(jq -nc --arg title "${{ github.event.issue.title }}" --arg color "14649120" --arg desc "A new issue has been linked to the AC Repo" --arg field_name "**Issue Author:**" --arg field_value "[${{ github.event.issue.user.login }}](${{ github.event.issue.user.html_url }})" --arg field_name2 "**Contributor:**" --arg field_value2 "[${{ github.event.sender.login }}](${{ github.event.sender.html_url }})" "$TEMPLATE")" >> $GITHUB_ENV
-      # - name: Discord notification
-      #   env:
-      #     DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_MONTHLY_REPORT }}
-      #   uses: Ilshidur/action-discord@0.3.0
-        - name: "Send file output.txt to discord channel"
+      - name: "Send file output.txt to discord channel"
         uses: sinshutu/upload-to-discord@master
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_MONTHLY_REPORT }}
