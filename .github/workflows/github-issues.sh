@@ -1,8 +1,8 @@
 #!/usr/bin/env /bin/bash
-set -euo pipefail
+#set -euo pipefail
 
 # debug mode
-#set -x
+set -x
 
 ###
 ## GLOBAL VARIABLES
@@ -11,9 +11,11 @@ GITHUB_TOKEN=${GITHUB_TOKEN:-''}
 ORG=${ORG:-'chromiecraft'}
 REPO=${REPO:-'chromiecraft'}
 API_URL_PREFIX=${API_URL_PREFIX:-'https://api.github.com'}
+MONTH_START=${MONTH_START:-'2021-04-01'}
+MONTH_END=${MONTH_END:-'2021-04-30'}
 
 repo_issues () {
-  for i in $(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues?state=all&labels=Linked%20[AC]&per_page=100" | jq -r 'map(select(.created_at | . >= "2021-04-01T00:00" and . <= "2021-04-30T23:59")) | sort_by(.number) | .[] | .number'); do
+  for i in $(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues?state=all&labels=Linked%20[AC]&per_page=100" | jq -r 'map(select(.created_at | . >= "'$MONTH_START'T00:00" and . <= "'$MONTH_END'T23:59")) | sort_by(.number) | .[] | .number'); do
     ISSUE_PAYLOAD=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues/${i}" -H "Accept: application/vnd.github.mercy-preview+json")
     ISSUE_TIMELINE_PAYLOAD=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues/${i}/timeline" -H "Accept: application/vnd.github.mockingbird-preview+json" | jq -r '.[] | select(.label.name=="Linked [AC]" or .label.name=="linked")')
      
@@ -45,7 +47,7 @@ author_json () {
     #TEST_PAYLOAD_AUTHOR_ISSUE_URL=$(cat test.json | jq -r --arg AUTHOR "${AUTHOR}" 'select(.author==$AUTHOR) | .title, .issue_url')
     #echo -e "#######################################################\nIssue Author: ${TEST_PAYLOAD_AUTHOR}\nCount: ${TEST_PAYLOAD_AUTHOR_COUNT}\nIssues:\n${TEST_PAYLOAD_AUTHOR_ISSUE_URL}\n#######################################################\n"
     echo -e "**Issue Author:** ${TEST_PAYLOAD_AUTHOR} **Count:** ${TEST_PAYLOAD_AUTHOR_COUNT}"
-    done | sort -n -k 5,5 -r
+    done | sort -n -k 5,5 -r >> output.txt
 }
 
 contributor_json () {
@@ -59,7 +61,7 @@ contributor_json () {
     #TEST_PAYLOAD_CONTRIBUTOR_ISSUE_URL="https://github.com/chromiecraft/chromiecraft/issues?q=is%3Aissue+label%3A%22Linked+%5BAC%5D%22+involves%3A${CONTRIBUTOR}+created%3A2021-02-01T00%3A00..2021-02-28T23%3A59+is%3Aclosed"
     #echo -e "#######################################################\nIssue Contributor: ${TEST_PAYLOAD_CONTRIBUTOR}\nCount: ${TEST_PAYLOAD_CONTRIBUTOR_COUNT}\nIssues:\n${TEST_PAYLOAD_CONTRIBUTOR_ISSUE_URL}\n#######################################################\n"
     echo -e "**Issue Contributor:** ${TEST_PAYLOAD_CONTRIBUTOR} **Count:** ${TEST_PAYLOAD_CONTRIBUTOR_COUNT}"
-    done | sort -n -k 5,5 -r
+    done | sort -n -k 5,5 -r >> output.txt
   rm -Rf test.json
 }
 
