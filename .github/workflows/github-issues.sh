@@ -46,8 +46,8 @@ author_json () {
     #TEST_PAYLOAD_AUTHOR_ISSUE_TITLE=$(cat test.json | jq -r --arg AUTHOR "${AUTHOR}" 'select(.author==$AUTHOR) | .title')
     #TEST_PAYLOAD_AUTHOR_ISSUE_URL=$(cat test.json | jq -r --arg AUTHOR "${AUTHOR}" 'select(.author==$AUTHOR) | .title, .issue_url')
     #echo -e "#######################################################\nIssue Author: ${TEST_PAYLOAD_AUTHOR}\nCount: ${TEST_PAYLOAD_AUTHOR_COUNT}\nIssues:\n${TEST_PAYLOAD_AUTHOR_ISSUE_URL}\n#######################################################\n"
-    echo -e "**Issue Author:** ${TEST_PAYLOAD_AUTHOR} **Count:** ${TEST_PAYLOAD_AUTHOR_COUNT}"
-    done | sort -n -k 5,5 -r >> output.txt
+    echo -e "<a href="https://github.com/${TEST_PAYLOAD_AUTHOR}">${TEST_PAYLOAD_AUTHOR}</a> - ${TEST_PAYLOAD_AUTHOR_COUNT}"
+    done | sort -n -k 4,4 -r >> output.txt
 }
 
 contributor_json () {
@@ -60,8 +60,8 @@ contributor_json () {
     #TEST_PAYLOAD_CONTRIBUTOR_ISSUE_URL=$(cat test.json | jq -r --arg CONTRIBUTOR "${CONTRIBUTOR}" 'select(.contributor==$CONTRIBUTOR) | .issue_url')
     #TEST_PAYLOAD_CONTRIBUTOR_ISSUE_URL="https://github.com/chromiecraft/chromiecraft/issues?q=is%3Aissue+label%3A%22Linked+%5BAC%5D%22+involves%3A${CONTRIBUTOR}+created%3A2021-02-01T00%3A00..2021-02-28T23%3A59+is%3Aclosed"
     #echo -e "#######################################################\nIssue Contributor: ${TEST_PAYLOAD_CONTRIBUTOR}\nCount: ${TEST_PAYLOAD_CONTRIBUTOR_COUNT}\nIssues:\n${TEST_PAYLOAD_CONTRIBUTOR_ISSUE_URL}\n#######################################################\n"
-    echo -e "**Issue Contributor:** ${TEST_PAYLOAD_CONTRIBUTOR} **Count:** ${TEST_PAYLOAD_CONTRIBUTOR_COUNT}"
-    done | sort -n -k 5,5 -r >> output.txt
+    echo -e "<a href="https://github.com/${TEST_PAYLOAD_CONTRIBUTOR}">${TEST_PAYLOAD_CONTRIBUTOR}</a> - ${TEST_PAYLOAD_CONTRIBUTOR_COUNT}"
+    done | sort -n -k 4,4 -r >> output.txt
   rm -Rf test.json
 }
 
