@@ -13,7 +13,7 @@
 
 1. Checkmarks
 
-![image](https://user-images.githubusercontent.com/75517/117695907-0673f800-b1c1-11eb-9028-826352bb711b.png)
+![GitHub checkmarks done right](https://user-images.githubusercontent.com/75517/117695907-0673f800-b1c1-11eb-9028-826352bb711b.png)
 
 2. Content Phase
 
