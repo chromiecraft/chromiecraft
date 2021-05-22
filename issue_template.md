@@ -112,6 +112,7 @@ Ubuntu 20.04
 - [lua-LevelUpReward](https://github.com/55Honey/Acore_LevelUpReward)
 - [lua-CarbonCopy](https://github.com/55Honey/Acore_CarbonCopy)
 - [mod-pvp-titles](https://github.com/azerothcore/mod-pvp-titles)
+- [lua-send-and-bind](https://github.com/55Honey/Acore_SendAndBind)
 
 ##### OTHER CUSTOMIZATIONS:
 
