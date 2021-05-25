@@ -4,8 +4,6 @@ BEFORE you fill out an issue, make these checks:
 - make sure you use an enUS client. We will just close your issue if you use enGB.
 - close wow, clear your cache by deleting the CACHE folder in you wow directory, try to reproduce the bug
 - if you have a suggestion, like increasing despawn timers, this is not an issue. Tell us in #suggestions on discord instead.
-- include sources in your bug report which are relevant to the 3.3.5a game version, 
-  we will close any bug like "X should be changed to Y" reported without sources
 
 <!-- IF YOU DO NOT FILL OUT THIS TEMPLATE, WE WILL CLOSE YOUR ISSUE! -->
 
@@ -55,7 +53,9 @@ Type here.
 
 Type here.
 
-
+##### SOURCE:
+<!-- HEADS UP: include sources in your bug report which are relevant to the 3.3.5a game version, 
+  we will close any bug like "X should be changed to Y" reported without sources -->
 
 ##### STEPS TO REPRODUCE THE PROBLEM:
 <!-- Describe precisely how to reproduce the bug so we can fix it or confirm its existence:
