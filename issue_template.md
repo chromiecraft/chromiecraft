@@ -95,7 +95,7 @@ Type here.
 
 ##### AC HASH/COMMIT:
 
-https://github.com/chromiecraft/azerothcore-wotlk/commit/9bea4dc0119afd4a1fdc15367e433686077f297c
+https://github.com/chromiecraft/azerothcore-wotlk/commit/3716ddf3e4e1ef138df334d01980fea019272001
 
 ##### OPERATING SYSTEM:
 
