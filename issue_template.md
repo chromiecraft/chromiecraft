@@ -103,15 +103,16 @@ Ubuntu 20.04
 
 ##### MODULES:
 
-- [mod-cfbg](https://github.com/azerothcore/mod-cfbg)
-- [mod-duel-reset](https://github.com/azerothcore/mod-duel-reset)
-- [mod-desertion-warnings](https://github.com/azerothcore/mod-desertion-warnings)
 - [mod-ah-bot](https://github.com/azerothcore/mod-ah-bot)
+- [mod-cfbg](https://github.com/azerothcore/mod-cfbg)
+- [mod-desertion-warnings](https://github.com/azerothcore/mod-desertion-warnings)
+- [mod-duel-reset](https://github.com/azerothcore/mod-duel-reset)
 - [mod-eluna-lua-engine](https://github.com/azerothcore/mod-eluna-lua-engine)
-- [mod-server-auto-shutdown](https://github.com/azerothcore/mod-server-auto-shutdown)
-- [lua-LevelUpReward](https://github.com/55Honey/Acore_LevelUpReward)
-- [lua-CarbonCopy](https://github.com/55Honey/Acore_CarbonCopy)
+- [mod-multi-client-check](https://github.com/azerothcore/mod-multi-client-check)
 - [mod-pvp-titles](https://github.com/azerothcore/mod-pvp-titles)
+- [mod-server-auto-shutdown](https://github.com/azerothcore/mod-server-auto-shutdown)
+- [lua-CarbonCopy](https://github.com/55Honey/Acore_CarbonCopy)
+- [lua-LevelUpReward](https://github.com/55Honey/Acore_LevelUpReward)
 - [lua-send-and-bind](https://github.com/55Honey/Acore_SendAndBind)
 
 ##### OTHER CUSTOMIZATIONS:
