@@ -53,7 +53,9 @@ Type here.
 
 Type here.
 
-
+##### SOURCE:
+<!-- HEADS UP: include sources in your bug report which are relevant to the 3.3.5a game version, 
+  we will close any bug like "X should be changed to Y" reported without sources -->
 
 ##### STEPS TO REPRODUCE THE PROBLEM:
 <!-- Describe precisely how to reproduce the bug so we can fix it or confirm its existence:
