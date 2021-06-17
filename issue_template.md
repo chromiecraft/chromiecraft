@@ -116,6 +116,7 @@ Ubuntu 20.04
 - [lua-CarbonCopy](https://github.com/55Honey/Acore_CarbonCopy)
 - [lua-LevelUpReward](https://github.com/55Honey/Acore_LevelUpReward)
 - [lua-send-and-bind](https://github.com/55Honey/Acore_SendAndBind)
+- [lua-Zonecheck](https://github.com/55Honey/acore_Zonecheck)
 
 ##### OTHER CUSTOMIZATIONS:
 
