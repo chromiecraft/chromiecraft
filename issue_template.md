@@ -110,8 +110,11 @@ Ubuntu 20.04
 - [mod-desertion-warnings](https://github.com/azerothcore/mod-desertion-warnings)
 - [mod-duel-reset](https://github.com/azerothcore/mod-duel-reset)
 - [mod-eluna-lua-engine](https://github.com/azerothcore/mod-eluna-lua-engine)
+- [mod-ip-tracker](https://github.com/azerothcore/mod-ip-tracker),
+- [mod-low-level-arena](https://github.com/azerothcore/mod-low-level-arena)
 - [mod-multi-client-check](https://github.com/azerothcore/mod-multi-client-check)
 - [mod-pvp-titles](https://github.com/azerothcore/mod-pvp-titles)
+- [mod-queue-list-cache](https://github.com/azerothcore/mod-queue-list-cache)
 - [mod-server-auto-shutdown](https://github.com/azerothcore/mod-server-auto-shutdown)
 - [lua-CarbonCopy](https://github.com/55Honey/Acore_CarbonCopy)
 - [lua-LevelUpReward](https://github.com/55Honey/Acore_LevelUpReward)
