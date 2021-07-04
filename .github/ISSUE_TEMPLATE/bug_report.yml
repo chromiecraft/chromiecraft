@@ -1,0 +1,13 @@
+name: Bug report
+description: Create a bug report to help us improve.
+body:
+  - type: checkboxes
+    id: client
+    attributes:
+      label: What client do you play on?
+      options:
+      - label: enGB
+      - label: enUS
+      - label: other (specify)
+    validations:
+      required: true
