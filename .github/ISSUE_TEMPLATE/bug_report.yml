@@ -1,6 +1,11 @@
 name: Bug report
 description: Create a bug report to help us improve.
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking your time to fill out a bug report. Remember to fill out all fields including the title above. 
+        An issue that is not properly filled out will be closed.
   - type: dropdown
     id: client
     attributes:
@@ -84,19 +89,19 @@ body:
         None
     validations:
       required: false
-  - type: textarea
+  - type: markdown
     id: commit
     attributes:
-      label: AC rev. hash/commit
-      placeholder: |
+      value: |
+        ##### AC HASH/COMMIT:
         https://github.com/chromiecraft/azerothcore-wotlk/commit/cecbd604d3f57312165cc53f8ed40feae51ee45f
     validations:
       required: true
-  - type: textarea
+  - type: markdown
     id: os
     attributes:
-      label: Operating system
-      placeholder: |
+      value: |
+        ##### OPERATING SYSTEM:
         Ubuntu 20.04
     validations:
       required: true
@@ -124,19 +129,19 @@ body:
         - [lua-Zonecheck](https://github.com/55Honey/acore_Zonecheck)
     validations:
       required: false
-  - type: textarea
+  - type: markdown
     id: customizations
     attributes:
-      label: Other Customizations
-      placeholder: |
+      value: |
+        ##### OTHER CUSTOMIZATIONS:
         None
     validations:
       required: false
-  - type: textarea
+  - type: markdown
     id: server
     attributes:
-      label: server
-      placeholder: |
+      value: |
+        ##### SERVER:
         ChromieCraft
     validations:
       required: false
