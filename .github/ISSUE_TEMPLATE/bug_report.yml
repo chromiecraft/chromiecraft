@@ -13,7 +13,11 @@ body:
       options:
       - enGB
       - enUS
-      - other (specify)
+      - deDE
+      - esES
+      - frFR
+      - ruRU
+      - other
     validations:
       required: true
   - type: checkboxes
