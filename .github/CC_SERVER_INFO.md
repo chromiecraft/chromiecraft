@@ -1,17 +1,3 @@
-<!--Thank you for your report. Please click submit new issue below.-->
-<!-----------Remember to tick all relevant boxes when done!---------->
-
-<!------------------------------------------------------------------->
-<!------------------------------------------------------------------->
-<!------------------ DO NOT MODIFY THE TEXT BELOW ------------------->
-<!------------------------------------------------------------------->
-<!------------------------------------------------------------------->
-
-
-##### AC HASH/COMMIT:
-
-https://github.com/chromiecraft/azerothcore-wotlk/commit/7c21d567d59153b37978756a5bf02daf6998e665
-
 ##### OPERATING SYSTEM:
 
 Ubuntu 20.04
