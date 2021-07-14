@@ -41,7 +41,10 @@ It is the duty of [AzerothCore](https://www.azerothcore.org/) contributors, or a
 
 ### Report
 
-If you find a bug yourself, you can report it directly to the AC issue tracker. You can copy-paste [this template](https://raw.githubusercontent.com/chromiecraft/chromiecraft/main/issue_template.md) and simply [paste it here](https://github.com/azerothcore/azerothcore-wotlk/issues/new?template=).
+If you find a bug yourself, you can report it directly to the AC issue tracker. You can:
+
+- take the AzerothCore version (commit hash) of ChromieCraft by copy-pasting the URL of the last commit of [this repo](https://github.com/chromiecraft/azerothcore-wotlk)
+- take all the other ChromieCraft system info from [this file](https://raw.githubusercontent.com/chromiecraft/chromiecraft/main/.github/CC_SERVER_INFO.md).
 
 ### Links
 
