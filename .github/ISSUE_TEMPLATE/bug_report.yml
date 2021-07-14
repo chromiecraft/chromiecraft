@@ -1,0 +1,151 @@
+name: Bug report
+description: Create a bug report to help us improve.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking your time to fill out a bug report. Remember to fill out all fields including the title above. 
+        An issue that is not properly filled out will be closed.
+  - type: dropdown
+    id: client
+    attributes:
+      label: What client do you play on?
+      options:
+      - enGB
+      - enUS
+      - deDE
+      - esES
+      - frFR
+      - ruRU
+      - other
+    validations:
+      required: true
+  - type: checkboxes
+    id: faction
+    attributes:
+      label: Faction
+      options:
+      - label: Alliance
+      - label: Horde
+  - type: checkboxes
+    id: phase
+    attributes:
+      label: "Content Phase:"
+      options:
+      - label: Generic
+      - label: 1-19
+      - label: 20-29
+      - label: 30-39
+      - label: 40-49
+      - label: 50-59
+  - type: textarea
+    id: current
+    attributes:
+      label: Current Behaviour
+      description: |
+        Describe the bug in detail. Database to link spells, NPCs, quests etc: https://wowgaming.altervista.org/aowow/
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Blizzlike Behaviour
+      description: |
+        Describe how it should be working without the bug. Link to evidence if possible such as YouTube videos or WoWHead comments from the time.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: |
+        HEADS UP: include sources in your bug report which are relevant to the 3.3.5a game version, 
+        we will close any bug like "X should be changed to Y" reported without sources.
+    validations:
+      required: false
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce the problem
+      description: |
+        Describe precisely how to reproduce the bug so we can fix it or confirm its existence:
+        - Which commands to use? Which NPC to teleport to?
+        - Do we need to have debug flags on Cmake?
+        - Do we need to look at the console while the bug happens?
+        - Other steps
+        - Use the ingame commands to identify the unique GUID of an ore/herb/npc:    .npc info  /  .gobject near
+      placeholder: |
+        1. 
+        2. 
+        3. 
+        4.
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Extra Notes
+      description: |
+        Any information that can help the developers to identify and fix the issue should be put here.
+        Examples:
+        Links to items/NPCs/quests from https://wowgaming.altervista.org/aowow/
+      placeholder: |
+        None
+    validations:
+      required: false
+  - type: markdown
+    id: commit
+    attributes:
+      value: |
+        ##### AC HASH/COMMIT:
+        https://github.com/chromiecraft/azerothcore-wotlk/commit/7c21d567d59153b37978756a5bf02daf6998e665
+    validations:
+      required: true
+  - type: markdown
+    id: os
+    attributes:
+      value: |
+        ##### OPERATING SYSTEM:
+        Ubuntu 20.04
+    validations:
+      required: true
+  - type: markdown
+    id: modules
+    attributes:
+      value: |
+        ##### MODULES:
+        - [mod-ah-bot](https://github.com/azerothcore/mod-ah-bot)
+        - [mod-cfbg](https://github.com/azerothcore/mod-cfbg)
+        - [mod-chromie-xp](https://github.com/azerothcore/mod-chromie-xp)
+        - [mod-desertion-warnings](https://github.com/azerothcore/mod-desertion-warnings)
+        - [mod-duel-reset](https://github.com/azerothcore/mod-duel-reset)
+        - [mod-eluna-lua-engine](https://github.com/azerothcore/mod-eluna-lua-engine)
+        - [mod-ip-tracker](https://github.com/azerothcore/mod-ip-tracker)
+        - [mod-low-level-arena](https://github.com/azerothcore/mod-low-level-arena)
+        - [mod-multi-client-check](https://github.com/azerothcore/mod-multi-client-check)
+        - [mod-pvp-titles](https://github.com/azerothcore/mod-pvp-titles)
+        - [mod-pvpstats-announcer](https://github.com/azerothcore/mod-pvpstats-announcer)
+        - [mod-queue-list-cache](https://github.com/azerothcore/mod-queue-list-cache)
+        - [mod-server-auto-shutdown](https://github.com/azerothcore/mod-server-auto-shutdown)
+        - [lua-CarbonCopy](https://github.com/55Honey/Acore_CarbonCopy)
+        - [lua-LevelUpReward](https://github.com/55Honey/Acore_LevelUpReward)
+        - [lua-send-and-bind](https://github.com/55Honey/Acore_SendAndBind)
+        - [lua-Zonecheck](https://github.com/55Honey/acore_Zonecheck)
+    validations:
+      required: false
+  - type: markdown
+    id: customizations
+    attributes:
+      value: |
+        ##### OTHER CUSTOMIZATIONS:
+        None
+    validations:
+      required: false
+  - type: markdown
+    id: server
+    attributes:
+      value: |
+        ##### SERVER:
+        ChromieCraft
+    validations:
+      required: false
