@@ -4,10 +4,10 @@
 
 1. Check the [bug list](https://github.com/chromiecraft/chromiecraft/issues) to see if the bug has already been reported. If yes, open the matching report and add your comment with "Confirmed". If possible, please add your core revision hash and a note telling us if this is your own local server or an online AC server).
 
-2. If the bug has not been reported yet, please [create a new ticket](https://github.com/chromiecraft/chromiecraft/issues/new). Please fill in all of the requested details.
+2. If the bug has not been reported yet, please [create a new ticket](https://github.com/chromiecraft/chromiecraft/issues/new/choose). Please fill in all of the requested details.
 
 - [**ChromieCraft issue tickets**](https://github.com/chromiecraft/chromiecraft/issues) : The complete list of currently reported issues (bugs).
-- [**Create a new issue ticket**](https://github.com/chromiecraft/chromiecraft/issues/new) : Open a new ticket page to fill in the required information.
+- [**Create a new issue ticket**](https://github.com/chromiecraft/chromiecraft/issues/new/choose) : Open a new ticket page to fill in the required information.
 
 #### Most common mistakes:
 
