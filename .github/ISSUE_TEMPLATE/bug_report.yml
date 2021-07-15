@@ -98,7 +98,7 @@ body:
     attributes:
       value: |
         ##### AC HASH/COMMIT:
-        https://github.com/chromiecraft/azerothcore-wotlk/commit/7c21d567d59153b37978756a5bf02daf6998e665
+        https://github.com/chromiecraft/azerothcore-wotlk/commit/4d6766d6a997767efc119676a16bab09bc60f429
     validations:
       required: true
   - type: markdown
