@@ -93,27 +93,27 @@ body:
         None
     validations:
       required: false
-  - type: markdown
+  - type: textarea
     id: commit
     attributes:
+      label: AC rev. hash/commit
       value: |
-        ##### AC HASH/COMMIT:
         https://github.com/chromiecraft/azerothcore-wotlk/commit/c7129fa0dd7b9951589599654fe83cdcd2a55d7a
     validations:
       required: true
-  - type: markdown
+  - type: textarea
     id: os
     attributes:
+      label: Operating system
       value: |
-        ##### OPERATING SYSTEM:
         Ubuntu 20.04
     validations:
       required: true
-  - type: markdown
+  - type: textarea
     id: modules
     attributes:
+      label: Modules
       value: |
-        ##### MODULES:
         - [mod-ah-bot](https://github.com/azerothcore/mod-ah-bot)
         - [mod-cfbg](https://github.com/azerothcore/mod-cfbg)
         - [mod-chromie-xp](https://github.com/azerothcore/mod-chromie-xp)
@@ -133,19 +133,19 @@ body:
         - [lua-Zonecheck](https://github.com/55Honey/acore_Zonecheck)
     validations:
       required: false
-  - type: markdown
+  - type: textarea
     id: customizations
     attributes:
+      label: Customizations
       value: |
-        ##### OTHER CUSTOMIZATIONS:
         None
     validations:
       required: false
-  - type: markdown
+  - type: textarea
     id: server
     attributes:
+      label: Server
       value: |
-        ##### SERVER:
         ChromieCraft
     validations:
       required: false
