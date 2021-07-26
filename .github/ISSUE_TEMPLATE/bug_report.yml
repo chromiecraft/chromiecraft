@@ -128,6 +128,7 @@ body:
         - [mod-queue-list-cache](https://github.com/azerothcore/mod-queue-list-cache)
         - [mod-server-auto-shutdown](https://github.com/azerothcore/mod-server-auto-shutdown)
         - [lua-CarbonCopy](https://github.com/55Honey/Acore_CarbonCopy)
+        - [lua-CustomWorldboss](https://github.com/55Honey/Acore_CustomWorldboss)
         - [lua-LevelUpReward](https://github.com/55Honey/Acore_LevelUpReward)
         - [lua-send-and-bind](https://github.com/55Honey/Acore_SendAndBind)
         - [lua-Zonecheck](https://github.com/55Honey/acore_Zonecheck)
