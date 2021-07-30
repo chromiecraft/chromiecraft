@@ -132,6 +132,7 @@ body:
         - [lua-LevelUpReward](https://github.com/55Honey/Acore_LevelUpReward)
         - [lua-send-and-bind](https://github.com/55Honey/Acore_SendAndBind)
         - [lua-Zonecheck](https://github.com/55Honey/acore_Zonecheck)
+        - [lua-TempAnnouncements](https://github.com/55Honey/Acore_TempAnnouncements)
     validations:
       required: false
   - type: textarea
