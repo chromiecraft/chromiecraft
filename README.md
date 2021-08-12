@@ -39,6 +39,8 @@ It is the duty of [AzerothCore](https://www.azerothcore.org/) contributors, or a
 
 6. Admins will close all issues labeled FIX-READY, as soon as ChromieCraft gets updated with the latest AC build.
 
+For a more complete guide to triaging bugs on AC, see the [Guide to Triaging](https://www.azerothcore.org/wiki/guide-to-triaging) on the AC wiki.
+
 ### Report
 
 If you find a bug yourself, you can report it directly to the AC issue tracker. You can:
