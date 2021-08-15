@@ -127,12 +127,13 @@ body:
         - [mod-pvpstats-announcer](https://github.com/azerothcore/mod-pvpstats-announcer)
         - [mod-queue-list-cache](https://github.com/azerothcore/mod-queue-list-cache)
         - [mod-server-auto-shutdown](https://github.com/azerothcore/mod-server-auto-shutdown)
-        - [lua-CarbonCopy](https://github.com/55Honey/Acore_CarbonCopy)
-        - [lua-CustomWorldboss](https://github.com/55Honey/Acore_CustomWorldboss)
-        - [lua-LevelUpReward](https://github.com/55Honey/Acore_LevelUpReward)
+        - [lua-carbon-copy](https://github.com/55Honey/Acore_CarbonCopy)
+        - [lua-custom-corldboss](https://github.com/55Honey/Acore_CustomWorldboss)
+        - [lua-level-up-reward](https://github.com/55Honey/Acore_LevelUpReward)
+        - [lua-recruit-a-friend[(https://github.com/55Honey/Acore_RecruitAFriend)
         - [lua-send-and-bind](https://github.com/55Honey/Acore_SendAndBind)
-        - [lua-Zonecheck](https://github.com/55Honey/acore_Zonecheck)
-        - [lua-TempAnnouncements](https://github.com/55Honey/Acore_TempAnnouncements)
+        - [lua-temp-announcements](https://github.com/55Honey/Acore_TempAnnouncements)
+        - [lua-zonecheck](https://github.com/55Honey/acore_Zonecheck)
     validations:
       required: false
   - type: textarea
