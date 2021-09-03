@@ -37,7 +37,7 @@ jobs:
                 ISSUE_TIMELINE_PAYLOAD=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues/${i}/timeline" -H "Accept: application/vnd.github.mockingbird-preview+json" | jq -r '.[] | select(.label.name=="Linked [AC]" or .label.name=="linked")')
                 
                 ISSUE_AUTHOR=$(echo "$ISSUE_PAYLOAD" | jq -r .user.login)
-                ISSUE_TITLE=$(echo "$ISSUE_PAYLOAD" | jq -r .title | tr '"' "'")
+                ISSUE_TITLE=$(echo "$ISSUE_PAYLOAD" | jq -r .title | tr '"' "'" | tr '\' " " | tr '/' " ")
                 ISSUE_HTML_URL=$(echo "$ISSUE_PAYLOAD" | jq -r .html_url)
 
                 ISSUE_TIMELINE_LABELED_BY=$(echo "$ISSUE_TIMELINE_PAYLOAD" | jq -s 'first(.[]| .actor.login)' | jq -r)
