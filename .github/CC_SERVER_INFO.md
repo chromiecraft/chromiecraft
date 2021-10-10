@@ -13,6 +13,7 @@ Ubuntu 20.04
 - [mod-ip-tracker](https://github.com/azerothcore/mod-ip-tracker)
 - [mod-low-level-arena](https://github.com/azerothcore/mod-low-level-arena)
 - [mod-multi-client-check](https://github.com/azerothcore/mod-multi-client-check)
+- [mod-rdf-expansion](https://github.com/azerothcore/mod-rdf-expansion)
 - [mod-pvp-titles](https://github.com/azerothcore/mod-pvp-titles)
 - [mod-pvpstats-announcer](https://github.com/azerothcore/mod-pvpstats-announcer)
 - [mod-queue-list-cache](https://github.com/azerothcore/mod-queue-list-cache)
