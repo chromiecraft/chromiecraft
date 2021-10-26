@@ -1,5 +1,5 @@
 # ChromieCraft.com Bug Tracker
-[English](README.md) | [Español](README_ES.md)
+🇬🇧  [English](README.md) | 🇪🇸 [Español](README_ES.md)
 
 ## PARA LOS JUGADORES: Cómo informar de los errores
 
