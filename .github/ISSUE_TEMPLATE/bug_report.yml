@@ -117,6 +117,7 @@ body:
       value: |
         - [mod-ah-bot](https://github.com/azerothcore/mod-ah-bot)
         - [mod-cfbg](https://github.com/azerothcore/mod-cfbg)
+        - [mod-chat-transmitter](https://github.com/azerothcore/mod-chat-transmitter)
         - [mod-chromie-xp](https://github.com/azerothcore/mod-chromie-xp)
         - [mod-desertion-warnings](https://github.com/azerothcore/mod-desertion-warnings)
         - [mod-duel-reset](https://github.com/azerothcore/mod-duel-reset)
