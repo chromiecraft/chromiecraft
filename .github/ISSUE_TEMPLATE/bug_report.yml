@@ -136,7 +136,7 @@ body:
         - [lua-send-and-bind](https://github.com/55Honey/Acore_SendAndBind)
         - [lua-temp-announcements](https://github.com/55Honey/Acore_TempAnnouncements)
         - [lua-zonecheck](https://github.com/55Honey/acore_Zonecheck)
-        - [lua-zone-debuff(https://github.com/55Honey/Acore_ZoneDebuff)
+        - [lua-zone-debuff](https://github.com/55Honey/Acore_ZoneDebuff)
     validations:
       required: false
   - type: textarea
