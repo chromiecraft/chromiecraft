@@ -39,7 +39,7 @@ body:
       - label: 30-39
       - label: 40-49
       - label: 50-59
-      - label: 60      
+      - label: '60'
   - type: textarea
     id: current
     attributes:
