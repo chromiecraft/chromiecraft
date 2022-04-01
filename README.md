@@ -32,7 +32,7 @@ It is the duty of [AzerothCore](https://www.azerothcore.org/) contributors, or a
 
 2. If the issue is not valid (missing information, not a bug, etc.), it should be closed (or you can ask the user for further clarification).
 
-3. If the issue is valid and the bug can be reproduced on a clean AC server (at a recent version), open a report in the [main AC repo issue tracker](https://github.com/azerothcore/azerothcore-wotlk/issues/new?template=). You can literally copy-paste the issue from ChromieCraft to AzerothCore, as the template already contains all information needed for AC. In addition, add the link to the original issue reported to ChromieCraft ("Originally reported LINK-TO-CHROMIECRAFT-ISSUE"). GitHub will automatically link the two reports.
+3. If the issue is valid and the bug can be reproduced on our PTR or a clean AC server (at a recent version), open a report in the [main AC repo issue tracker](https://github.com/azerothcore/azerothcore-wotlk/issues/new?template=). You can literally copy-paste the issue from ChromieCraft to AzerothCore, as the template already contains all information needed for AC. In addition, add the link to the original issue reported to ChromieCraft ("Originally reported LINK-TO-CHROMIECRAFT-ISSUE"). GitHub will automatically link the two reports.
 
 4. Add the correct level bracket tag to the AC issue tracker ticket report, for example [[1-19]](https://github.com/azerothcore/azerothcore-wotlk/labels/1-19).
 
