@@ -4,10 +4,10 @@ on:
     inputs:
       monthstart:    
         required: true
-        default: '2021-xx-01'
+        default: '2022-xx-01'
       monthend:    
         required: true
-        default: '2021-xx-31'
+        default: '2022-xx-31'
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

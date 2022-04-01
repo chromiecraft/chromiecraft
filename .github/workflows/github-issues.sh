@@ -11,8 +11,8 @@ GITHUB_TOKEN=${GITHUB_TOKEN:-''}
 ORG=${ORG:-'chromiecraft'}
 REPO=${REPO:-'chromiecraft'}
 API_URL_PREFIX=${API_URL_PREFIX:-'https://api.github.com'}
-MONTH_START=${MONTH_START:-'2021-08-01'}
-MONTH_END=${MONTH_END:-'2021-08-31'}
+MONTH_START=${MONTH_START:-'2022-03-01'}
+MONTH_END=${MONTH_END:-'2022-03-31'}
 
 get_public_pagination () {
     public_pages=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -I "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues?state=all&labels=Linked%20[AC]&per_page=100" | grep -Eo '&page=[0-9]+' | grep -Eo '[0-9]+' | tail -1;)
