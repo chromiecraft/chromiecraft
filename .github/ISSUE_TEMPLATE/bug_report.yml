@@ -135,6 +135,7 @@ body:
         - [mod-pvpstats-announcer](https://github.com/azerothcore/mod-pvpstats-announcer)
         - [mod-queue-list-cache](https://github.com/azerothcore/mod-queue-list-cache)
         - [mod-server-auto-shutdown](https://github.com/azerothcore/mod-server-auto-shutdown)
+        - [mod-transmog](https://github.com/azerothcore/mod-transmog)
         - [lua-carbon-copy](https://github.com/55Honey/Acore_CarbonCopy)
         - [lua-exchange-npc](https://github.com/55Honey/Acore_ExchangeNpc)
         - [lua-custom-worldboss](https://github.com/55Honey/Acore_CustomWorldboss)
