@@ -100,7 +100,7 @@ body:
     attributes:
       label: AC rev. hash/commit
       value: |
-        https://github.com/chromiecraft/azerothcore-wotlk/commit/856aed6fc6ad34fd07f1aa9df2a39c710ffd5b33
+        https://github.com/chromiecraft/azerothcore-wotlk/commit/48fccc851d8491c9019a585c74417641376795de
     validations:
       required: true
   - type: textarea
