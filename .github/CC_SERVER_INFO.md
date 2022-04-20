@@ -23,6 +23,7 @@ Ubuntu 20.04
 - [mod-pvpstats-announcer](https://github.com/azerothcore/mod-pvpstats-announcer)
 - [mod-queue-list-cache](https://github.com/azerothcore/mod-queue-list-cache)
 - [mod-server-auto-shutdown](https://github.com/azerothcore/mod-server-auto-shutdown)
+- [mod-weekend-xp](https://github.com/azerothcore/mod-weekend-xp)
 - [mod-transmog](https://github.com/azerothcore/mod-transmog)
 - [lua-CarbonCopy](https://github.com/55Honey/Acore_CarbonCopy)
 - [lua-LevelUpReward](https://github.com/55Honey/Acore_LevelUpReward)
