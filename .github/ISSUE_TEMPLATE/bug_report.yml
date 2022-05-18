@@ -117,7 +117,6 @@ body:
       label: Modules
       value: |
         - [mod-ah-bot](https://github.com/azerothcore/mod-ah-bot)
-        - [mod-autobalance](https://github.com/azerothcore/mod-autobalance) (disabled, used as a lib required by mod-azerothshard)
         - [mod-bg-item-reward](https://github.com/azerothcore/mod-bg-item-reward)
         - [mod-cfbg](https://github.com/azerothcore/mod-cfbg)
         - [mod-chat-transmitter](https://github.com/azerothcore/mod-chat-transmitter)
@@ -136,7 +135,6 @@ body:
         - [mod-pvpstats-announcer](https://github.com/azerothcore/mod-pvpstats-announcer)
         - [mod-queue-list-cache](https://github.com/azerothcore/mod-queue-list-cache)
         - [mod-rdf-expansion](https://github.com/azerothcore/mod-rdf-expansion)
-        - [mod-save-inventory](https://github.com/Nyeriah/mod-save-inventory) (disabled for the moment)
         - [mod-transmog](https://github.com/azerothcore/mod-transmog)
         - [mod-weekend-xp](https://github.com/azerothcore/mod-weekend-xp)
         - [lua-carbon-copy](https://github.com/55Honey/Acore_CarbonCopy)
