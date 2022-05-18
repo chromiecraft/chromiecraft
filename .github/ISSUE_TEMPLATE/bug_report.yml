@@ -117,7 +117,6 @@ body:
       label: Modules
       value: |
         - [mod-ah-bot](https://github.com/azerothcore/mod-ah-bot)
-        - [mod-anticheat](https://github.com/azerothcore/mod-anticheat)
         - [mod-autobalance](https://github.com/azerothcore/mod-autobalance) (disabled, used as a lib required by mod-azerothshard)
         - [mod-bg-item-reward](https://github.com/azerothcore/mod-bg-item-reward)
         - [mod-cfbg](https://github.com/azerothcore/mod-cfbg)
