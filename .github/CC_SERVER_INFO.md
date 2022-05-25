@@ -10,6 +10,7 @@ Ubuntu 20.04
 - [mod-cfbg](https://github.com/azerothcore/mod-cfbg)
 - [mod-chat-transmitter](https://github.com/azerothcore/mod-chat-transmitter)
 - [mod-chromie-xp](https://github.com/azerothcore/mod-chromie-xp)
+- [mod-costumes](https://github.com/azerothcore/mod-costumes)
 - [mod-cta-switch](https://github.com/azerothcore/mod-cta-switch)
 - [mod-desertion-warnings](https://github.com/azerothcore/mod-desertion-warnings)
 - [mod-dmf-switch](https://github.com/azerothcore/mod-dmf-switch)
