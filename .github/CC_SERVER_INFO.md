@@ -27,6 +27,7 @@ Ubuntu 20.04
 - [mod-rdf-expansion](https://github.com/azerothcore/mod-rdf-expansion)
 - [mod-transmog](https://github.com/azerothcore/mod-transmog)
 - [mod-weekend-xp](https://github.com/azerothcore/mod-weekend-xp)
+- [mod-instanced-worldbosses](https://github.com/nyeriah/mod-instanced-worldbosses)
 - [lua-CarbonCopy](https://github.com/55Honey/Acore_CarbonCopy)
 - [lua-LevelUpReward](https://github.com/55Honey/Acore_LevelUpReward)
 - [lua-send-and-bind](https://github.com/55Honey/Acore_SendAndBind)
