@@ -29,6 +29,8 @@ body:
       - label: Alliance
       - label: Horde
       - label: Both
+    validations:
+      required: true
   - type: dropdown
     id: phase
     attributes:
@@ -41,6 +43,8 @@ body:
       - label: 40-49
       - label: 50-59
       - label: '60'
+    validations:
+      required: true
   - type: textarea
     id: current
     attributes:
