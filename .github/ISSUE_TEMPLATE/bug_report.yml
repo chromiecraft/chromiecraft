@@ -21,14 +21,15 @@ body:
       - other
     validations:
       required: true
-  - type: checkboxes
+  - type: dropdown
     id: faction
     attributes:
       label: Faction
       options:
       - label: Alliance
       - label: Horde
-  - type: checkboxes
+      - label: Both
+  - type: dropdown
     id: phase
     attributes:
       label: "Content Phase:"
