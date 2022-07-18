@@ -26,9 +26,9 @@ body:
     attributes:
       label: Faction
       options:
-      - label: Alliance
-      - label: Horde
-      - label: Both
+      - Alliance
+      - Horde
+      - Both
     validations:
       required: true
   - type: dropdown
@@ -36,13 +36,13 @@ body:
     attributes:
       label: "Content Phase:"
       options:
-      - label: Generic
-      - label: 1-19
-      - label: 20-29
-      - label: 30-39
-      - label: 40-49
-      - label: 50-59
-      - label: '60'
+      - Generic
+      - 1-19
+      - 20-29
+      - 30-39
+      - 40-49
+      - 50-59
+      - '60'
     validations:
       required: true
   - type: textarea
