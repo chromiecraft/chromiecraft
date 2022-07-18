@@ -40,7 +40,7 @@ Es el deber de los colaboradores de [AzerothCore](https://www.azerothcore.org/),
 
 6. Los administradores cerrarán todos los problemas etiquetados como FIX-READY, tan pronto como ChromieCraft se actualice con la última versión de AC.
 
-Para una guía más completa sobre la clasificación de errores en AC, consulte la [Guía de clasificación](https://www.azerothcore.org/wiki/guide-to-triaging) en la wiki de AC.
+Para una guía más completa sobre la clasificación de errores en AC, consulte la [Guía de clasificación](https://www.azerothcore.org/wiki/es/guide-to-triaging) en la wiki de AC.
 
 ### Informe
 

@@ -21,14 +21,17 @@ body:
       - other
     validations:
       required: true
-  - type: checkboxes
+  - type: dropdown
     id: faction
     attributes:
       label: Faction
       options:
       - label: Alliance
       - label: Horde
-  - type: checkboxes
+      - label: Both
+    validations:
+      required: true
+  - type: dropdown
     id: phase
     attributes:
       label: "Content Phase:"
@@ -40,6 +43,8 @@ body:
       - label: 40-49
       - label: 50-59
       - label: '60'
+    validations:
+      required: true
   - type: textarea
     id: current
     attributes:
