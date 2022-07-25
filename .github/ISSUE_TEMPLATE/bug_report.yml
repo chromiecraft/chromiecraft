@@ -80,7 +80,7 @@ body:
         - Do we need to have debug flags on Cmake?
         - Do we need to look at the console while the bug happens?
         - Other steps
-        - Use the ingame commands to identify the unique GUID of an ore/herb/npc:    .npc info  /  .gobject near
+        - Use the ingame commands to identify the unique GUID of an ore/herb/npc:    .npcinfo  /  .gobject near
       placeholder: |
         1. 
         2. 
