@@ -69,7 +69,7 @@ body:
         HEADS UP: include sources in your bug report which are relevant to the 3.3.5a game version, 
         we will close any bug like "X should be changed to Y" reported without sources.
     validations:
-      required: false
+      required: true
   - type: textarea
     id: reproduce
     attributes:
