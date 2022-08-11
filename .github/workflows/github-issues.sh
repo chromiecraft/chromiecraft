@@ -55,7 +55,6 @@ author_json () {
     #echo -e "#######################################################\nIssue Author: ${TEST_PAYLOAD_AUTHOR}\nCount: ${TEST_PAYLOAD_AUTHOR_COUNT}\nIssues:\n${TEST_PAYLOAD_AUTHOR_ISSUE_URL}\n#######################################################\n"
     echo -e "<a href="https://github.com/${TEST_PAYLOAD_AUTHOR}">${TEST_PAYLOAD_AUTHOR}</a> - ${TEST_PAYLOAD_AUTHOR_COUNT}"
     done | sort -n -k 4,4 -r >> output.txt
-    #done >> output.txt
 }
 
 contributor_json () {
@@ -69,8 +68,6 @@ contributor_json () {
     #echo -e "#######################################################\nIssue Contributor: ${TEST_PAYLOAD_CONTRIBUTOR}\nCount: ${TEST_PAYLOAD_CONTRIBUTOR_COUNT}\nIssues:\n${TEST_PAYLOAD_CONTRIBUTOR_ISSUE_URL}\n#######################################################\n"
     echo -e "<a href="https://github.com/${TEST_PAYLOAD_CONTRIBUTOR}">${TEST_PAYLOAD_CONTRIBUTOR}</a> - ${TEST_PAYLOAD_CONTRIBUTOR_COUNT}"
     done | sort -n -k 4,4 -r >> output.txt
-    #done >> output.txt
-  #rm -Rf test.json
 }
 
 repo_issues
