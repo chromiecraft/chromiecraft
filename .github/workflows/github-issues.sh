@@ -2,7 +2,7 @@
 #set -euo pipefail
 
 # debug mode
-set -x
+# set -x
 
 ###
 ## GLOBAL VARIABLES
