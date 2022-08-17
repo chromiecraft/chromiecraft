@@ -21,6 +21,9 @@ jobs:
   github-monthly-report:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        
       - name: "Pull data from Github"
         run: source ./apps/github-issues.sh
 
