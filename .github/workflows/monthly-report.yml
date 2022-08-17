@@ -28,6 +28,7 @@ jobs:
 
       - name: "Pull data from Github"
         run: source ./apps/github-issues.sh
+        shell: bash
 
       - name: "Send file output.txt to discord channel"
         uses: sinshutu/upload-to-discord@master
