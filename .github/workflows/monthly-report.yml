@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: "Pull data from Github"
-        run: source ./apps/github-issues.sh
+        run: ./apps/github-issues.sh
         shell: bash
 
       - name: "Send file output.txt to discord channel"
