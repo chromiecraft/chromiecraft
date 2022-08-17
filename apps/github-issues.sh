@@ -68,6 +68,7 @@ EOF
 author_json () {
   # Process data about the issue creator
   AUTHORS=$(cat issues.json| jq -r '.author' | sort | uniq -c | awk -F " " '{print "{\"author\":""\""$2"\""",\"count\":" $1"}"}' | jq -r .author)
+  echo -e "Issue Reporters" >> output.txt
     # Iterate through all issue creators found in the temp json like file
     for AUTHOR in ${AUTHORS}; do
     # Capture the issue creator data into a variable
@@ -86,6 +87,7 @@ author_json () {
 contributor_json () {
   # Process data about who appled the linked label (contributor)
   CONTRIBUTORS=$(cat issues.json| jq -r '.contributor' | sort | uniq -c | awk -F " " '{print "{\"contributor\":""\""$2"\""",\"count\":" $1"}"}' | jq -r .contributor)
+  echo -e "Contributors that linked issues" >> output.txt
     # Iterate through all issue contributors found in the temp json like file
     for CONTRIBUTOR in ${CONTRIBUTORS}; do
     # Capture the issue contributor data into a variable
