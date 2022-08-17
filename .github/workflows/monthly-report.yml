@@ -29,8 +29,6 @@ jobs:
       - name: "Pull data from Github"
         shell: bash
         run: |
-          bash --version
-          jq --version
           ./apps/github-issues.sh
         
       - name: "Send file output.txt to discord channel"
