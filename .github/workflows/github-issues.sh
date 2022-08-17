@@ -13,6 +13,8 @@ REPO=${REPO:-'chromiecraft'}
 API_URL_PREFIX=${API_URL_PREFIX:-'https://api.github.com'}
 MONTH_START=${MONTH_START:-'2022-03-01'}
 MONTH_END=${MONTH_END:-'2022-03-31'}
+EVENT_START=${EVENT_START:-'2021-00-01'}
+EVENT_END=${EVENT_END:-'2022-12-31'}
 
 get_public_pagination () {
   # Github limits to 100 results per query, so we need to break up the results into 100 result chunks. We do this by breaking it up into pages
@@ -29,28 +31,34 @@ repo_issues () {
   # Iterate through all pages in the sequence
   for PAGE in $(limit_public_pagination); do
       # Filter through results and return on issues within the date range, sort by the issue number 
-      for i in $(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues?state=all&labels=Linked%20[AC]&page=${PAGE}&per_page=100" | jq -r 'map(select(.created_at | . >= "'$MONTH_START'T00:00" and . <= "'$MONTH_END'T23:59")) | sort_by(.number) | .[] | .number'); do
-        # Capture the data from each filtered issue into a variable
-        ISSUE_PAYLOAD=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues/${i}" -H "Accept: application/vnd.github.mercy-preview+json")
-        # Capture the data from each filtered issue from the timeline api
-        ISSUE_TIMELINE_PAYLOAD=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues/${i}/timeline" -H "Accept: application/vnd.github.mockingbird-preview+json" | jq -r '.[] | select(.label.name=="Linked [AC]" or .label.name=="linked")')
-        
-        # Capture who reported the issue into a variable
-        ISSUE_AUTHOR=$(echo "$ISSUE_PAYLOAD" | jq -r .user.login)
-        # Capture the url for the issue into a variable
-        ISSUE_HTML_URL=$(echo "$ISSUE_PAYLOAD" | jq -r .html_url)
+      for i in $(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues?state=all&labels=Linked%20[AC]&page=${PAGE}&per_page=100" | jq -r 'map(select(.created_at | . >= "'$EVENT_START'T00:00" and . <= "'$EVENT_END'T23:59")) | sort_by(.number) | .[] | .number'); do
 
-        # Capture who applied the linked label
-        ISSUE_TIMELINE_LABELED_BY=$(echo "$ISSUE_TIMELINE_PAYLOAD" | jq -s 'first(.[]| .actor.login)' | jq -r)
+        # Capture the event date from the timeline api
+        EVENT_DATE=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues/${i}/timeline" -H "Accept: application/vnd.github.mockingbird-preview+json" | jq -r 'map(select(.created_at | . >= "'$MONTH_START'T00:00" and . <= "'$MONTH_END'T23:59"))' | jq -r '.[] | select(.label.name=="Linked [AC]" or .label.name=="linked")')
+        # check if the response from the event date is empty
+        if [ "$EVENT_DATE" != "null" ] | [ "$EVENT_DATE" != "[]" ] | [ "$EVENT_DATE" != "" ]; then
+            # Capture the data from each filtered issue into a variable
+            ISSUE_PAYLOAD=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues/${i}" -H "Accept: application/vnd.github.mercy-preview+json")
+            # Capture the data from each filtered issue from the timeline api
+            ISSUE_TIMELINE_PAYLOAD=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues/${i}/timeline" -H "Accept: application/vnd.github.mockingbird-preview+json" | jq -r '.[] | select(.label.name=="Linked [AC]" or .label.name=="linked")')
+            
+            # Capture who reported the issue into a variable
+            ISSUE_AUTHOR=$(echo "$ISSUE_PAYLOAD" | jq -r .user.login)
+            # Capture the url for the issue into a variable
+            ISSUE_HTML_URL=$(echo "$ISSUE_PAYLOAD" | jq -r .html_url)
 
-        # output data from variables into a json like file for later processing
-        cat >> test.json << EOF
+            # Capture who applied the linked label
+            ISSUE_TIMELINE_LABELED_BY=$(echo "$ISSUE_TIMELINE_PAYLOAD" | jq -s 'first(.[]| .actor.login)' | jq -r)
+
+            # output data from variables into a json like file for later processing
+            cat >> issues.json << EOF
 {
   "author": "${ISSUE_AUTHOR}",
   "issue_url": "${ISSUE_HTML_URL}",
   "contributor": "${ISSUE_TIMELINE_LABELED_BY}"         
 }
 EOF
+          fi
 
       done
   done
@@ -58,11 +66,11 @@ EOF
 
 author_json () {
   # Process data about the issue creator
-  AUTHORS=$(cat test.json| jq -r '.author' | sort | uniq -c | awk -F " " '{print "{\"author\":""\""$2"\""",\"count\":" $1"}"}' | jq -r .author)
+  AUTHORS=$(cat issues.json| jq -r '.author' | sort | uniq -c | awk -F " " '{print "{\"author\":""\""$2"\""",\"count\":" $1"}"}' | jq -r .author)
     # Iterate through all issue creators found in the temp json like file
     for AUTHOR in ${AUTHORS}; do
     # Capture the issue creator data into a variable
-    TEST_PAYLOAD=$(cat test.json| jq -r '.author' | sort | uniq -c | awk -F " " '{print "{\"author\":""\""$2"\""",\"count\":" $1"}"}' | jq -r .)
+    TEST_PAYLOAD=$(cat issues.json| jq -r '.author' | sort | uniq -c | awk -F " " '{print "{\"author\":""\""$2"\""",\"count\":" $1"}"}' | jq -r .)
     # Capture the issue creator username into a variable
     TEST_PAYLOAD_AUTHOR=$(echo "$TEST_PAYLOAD" | jq -r --arg AUTHOR "${AUTHOR}" 'select(.author==$AUTHOR) | .author')
     Capture the number of issues created by the same issue creator
@@ -76,16 +84,16 @@ author_json () {
 
 contributor_json () {
   # Process data about who appled the linked label (contributor)
-  CONTRIBUTORS=$(cat test.json| jq -r '.contributor' | sort | uniq -c | awk -F " " '{print "{\"contributor\":""\""$2"\""",\"count\":" $1"}"}' | jq -r .contributor)
+  CONTRIBUTORS=$(cat issues.json| jq -r '.contributor' | sort | uniq -c | awk -F " " '{print "{\"contributor\":""\""$2"\""",\"count\":" $1"}"}' | jq -r .contributor)
     # Iterate through all issue contributors found in the temp json like file
     for CONTRIBUTOR in ${CONTRIBUTORS}; do
     # Capture the issue contributor data into a variable
-    TEST_PAYLOAD=$(cat test.json| jq -r '.contributor' | sort | uniq -c | awk -F " " '{print "{\"contributor\":""\""$2"\""",\"count\":" $1"}"}' | jq -r .)
+    TEST_PAYLOAD=$(cat issues.json| jq -r '.contributor' | sort | uniq -c | awk -F " " '{print "{\"contributor\":""\""$2"\""",\"count\":" $1"}"}' | jq -r .)
     # Capture the issue contributor username into a variable
     TEST_PAYLOAD_CONTRIBUTOR=$(echo "$TEST_PAYLOAD" | jq -r --arg CONTRIBUTOR "${CONTRIBUTOR}" 'select(.contributor==$CONTRIBUTOR) | .contributor')
     # Capture the number of issues linked by the same issue contributor
     TEST_PAYLOAD_CONTRIBUTOR_COUNT=$(echo "$TEST_PAYLOAD" | jq -r --arg CONTRIBUTOR "${CONTRIBUTOR}" 'select(.contributor==$CONTRIBUTOR) | .count')
-    #TEST_PAYLOAD_CONTRIBUTOR_ISSUE_URL=$(cat test.json | jq -r --arg CONTRIBUTOR "${CONTRIBUTOR}" 'select(.contributor==$CONTRIBUTOR) | .issue_url')
+    #TEST_PAYLOAD_CONTRIBUTOR_ISSUE_URL=$(cat issues.json | jq -r --arg CONTRIBUTOR "${CONTRIBUTOR}" 'select(.contributor==$CONTRIBUTOR) | .issue_url')
     #TEST_PAYLOAD_CONTRIBUTOR_ISSUE_URL="https://github.com/chromiecraft/chromiecraft/issues?q=is%3Aissue+label%3A%22Linked+%5BAC%5D%22+involves%3A${CONTRIBUTOR}+created%3A2021-02-01T00%3A00..2021-02-28T23%3A59+is%3Aclosed"
     #echo -e "#######################################################\nIssue Contributor: ${TEST_PAYLOAD_CONTRIBUTOR}\nCount: ${TEST_PAYLOAD_CONTRIBUTOR_COUNT}\nIssues:\n${TEST_PAYLOAD_CONTRIBUTOR_ISSUE_URL}\n#######################################################\n"
     # Output the results
