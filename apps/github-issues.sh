@@ -73,7 +73,7 @@ author_json () {
     TEST_PAYLOAD=$(cat issues.json| jq -r '.author' | sort | uniq -c | awk -F " " '{print "{\"author\":""\""$2"\""",\"count\":" $1"}"}' | jq -r .)
     # Capture the issue creator username into a variable
     TEST_PAYLOAD_AUTHOR=$(echo "$TEST_PAYLOAD" | jq -r --arg AUTHOR "${AUTHOR}" 'select(.author==$AUTHOR) | .author')
-    Capture the number of issues created by the same issue creator
+    # Capture the number of issues created by the same issue creator
     TEST_PAYLOAD_AUTHOR_COUNT=$(echo "$TEST_PAYLOAD" | jq -r --arg AUTHOR "${AUTHOR}" 'select(.author==$AUTHOR) | .count')
     #echo -e "#######################################################\nIssue Author: ${TEST_PAYLOAD_AUTHOR}\nCount: ${TEST_PAYLOAD_AUTHOR_COUNT}\nIssues:\n${TEST_PAYLOAD_AUTHOR_ISSUE_URL}\n#######################################################\n"
     # Output the results
