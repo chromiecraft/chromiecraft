@@ -36,4 +36,4 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_MONTHLY_REPORT }}
         with:
-          args: output.txt
+          args: output.txt issues.json
