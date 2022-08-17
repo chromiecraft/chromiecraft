@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Pull data from Github"
-        run: source ./.github/github-issues.sh
+        run: source ./.github/workflows/github-issues.sh
 
       - name: "Send file output.txt to discord channel"
         uses: sinshutu/upload-to-discord@master
