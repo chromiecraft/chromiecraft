@@ -27,9 +27,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: "Pull data from Github"
-        run: ./apps/github-issues.sh
         shell: bash
-
+        run: |
+          bash --version
+          jq --version
+          ./apps/github-issues.sh
+        
       - name: "Send file output.txt to discord channel"
         uses: sinshutu/upload-to-discord@master
         env:
