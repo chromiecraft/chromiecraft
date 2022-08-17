@@ -34,7 +34,7 @@ repo_issues () {
       for i in $(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues?state=all&labels=Linked%20[AC]&page=${PAGE}&per_page=100" | jq -r 'map(select(.created_at | . >= "'${EVENT_START}'T00:00" and . <= "'${EVENT_END}'T23:59")) | sort_by(.number) | .[] | .number'); do
 
         # Capture the event date from the timeline api
-        EVENT_DATE=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues/${i}/timeline" -H "Accept: application/vnd.github.mockingbird-preview+json" | jq -r 'map(select(.created_at | . >= "'${MONTH_START}'T00:00" and . <= "'${MONTH_END}'T23:59"))' | jq -r '.[] | select(.label.name=="Linked [AC]" or .label.name=="linked")')
+        EVENT_DATE=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues/${i}/timeline" -H "Accept: application/vnd.github.mockingbird-preview+json" | jq -r 'map(select(.created_at | . >= "'${MONTH_START}'T00:00" and . <= "'${MONTH_END}'T23:59")) | .[] | select(.label.name=="Linked [AC]" or .label.name=="linked")')
         # check if the response from the event date is empty
         if [ "${EVENT_DATE}" != "null" ] || [ "${EVENT_DATE}" != "[]" ] || [ "${EVENT_DATE}" != "" ]; then
             # Capture the data from each filtered issue into a variable
@@ -58,6 +58,7 @@ repo_issues () {
   "contributor": "${ISSUE_TIMELINE_LABELED_BY}"         
 }
 EOF
+          echo -e "issue has been processed "${i}""
           fi
 
       done
