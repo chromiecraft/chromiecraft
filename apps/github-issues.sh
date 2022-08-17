@@ -1,5 +1,5 @@
 #!/usr/bin/env /bin/bash
-#set -euo pipefail
+set -euo pipefail
 
 # debug mode
 # set -x
@@ -36,7 +36,7 @@ repo_issues () {
         # Capture the event date from the timeline api
         EVENT_DATE=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues/${i}/timeline" -H "Accept: application/vnd.github.mockingbird-preview+json" | jq -r 'map(select(.created_at | . >= "'${MONTH_START}'T00:00" and . <= "'${MONTH_END}'T23:59"))' | jq -r '.[] | select(.label.name=="Linked [AC]" or .label.name=="linked")')
         # check if the response from the event date is empty
-        if [ "${EVENT_DATE}" != "null" ] | [ "${EVENT_DATE}" != "[]" ] | [ "${EVENT_DATE}" != "" ]; then
+        if [ "${EVENT_DATE}" != "null" ] || [ "${EVENT_DATE}" != "[]" ] || [ "${EVENT_DATE}" != "" ]; then
             # Capture the data from each filtered issue into a variable
             ISSUE_PAYLOAD=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues/${i}" -H "Accept: application/vnd.github.mercy-preview+json")
             # Capture the data from each filtered issue from the timeline api
