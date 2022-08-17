@@ -10,7 +10,7 @@ on:
         default: '2022-xx-31'
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
   ORG: 'chromiecraft'
   REPO: 'chromiecraft'
   API_URL_PREFIX: 'https://api.github.com'
