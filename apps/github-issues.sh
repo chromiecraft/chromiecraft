@@ -36,7 +36,7 @@ repo_issues () {
         # Capture the event date from the timeline api
         EVENT_DATE=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues/${i}/timeline" -H "Accept: application/vnd.github.mockingbird-preview+json" | jq -r 'map(select(.created_at | . >= "'"${MONTH_START}"'T00:00" and . <= "'"${MONTH_END}"'T23:59")) | .[] | select(.label.name=="Linked [AC]")')
         # check if the response from the event date is empty
-        if [ "${EVENT_DATE}" != "null" ] || [ "${EVENT_DATE}" != "[]" ] || [ "${EVENT_DATE}" != "" ]; then
+        if [ "${EVENT_DATE}" != "null" ] && [ "${EVENT_DATE}" != "[]" ] && [ "${EVENT_DATE}" != "" ]; then
             # Capture the data from each filtered issue into a variable
             ISSUE_PAYLOAD=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues/${i}" -H "Accept: application/vnd.github.mercy-preview+json")
             # Capture the data from each filtered issue from the timeline api
@@ -58,7 +58,7 @@ repo_issues () {
   "contributor": "${ISSUE_TIMELINE_LABELED_BY}"         
 }
 EOF
-          echo -e "issue has been processed "${i}""
+          echo -e "issue has been processed ""${i}"""
           fi
 
       done
