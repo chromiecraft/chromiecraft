@@ -42,7 +42,7 @@ body:
       - 30-39
       - 40-49
       - 50-59
-      - '60'
+      - 60-64
     validations:
       required: true
   - type: textarea
