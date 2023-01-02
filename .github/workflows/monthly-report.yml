@@ -4,10 +4,10 @@ on:
     inputs:
       monthstart:    
         required: true
-        default: '2022-xx-01'
+        default: '2023-xx-01'
       monthend:    
         required: true
-        default: '2022-xx-31'
+        default: '2023-xx-31'
 
 env:
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -16,15 +16,13 @@ env:
   API_URL_PREFIX: 'https://api.github.com'
   MONTH_START: ${{ github.event.inputs.monthstart }}
   MONTH_END: ${{ github.event.inputs.monthend }}
-  EVENT_START: '2021-06-01'
-  EVENT_END: '2022-12-31'
 
 jobs:
   github-monthly-report:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: "Pull data from Github"
         shell: bash
