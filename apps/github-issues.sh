@@ -13,8 +13,8 @@ REPO=${REPO:-'chromiecraft'}
 API_URL_PREFIX=${API_URL_PREFIX:-'https://api.github.com'}
 MONTH_START=${MONTH_START:-'2022-03-01'}
 MONTH_END=${MONTH_END:-'2022-03-31'}
-EVENT_START=${EVENT_START:-'2021-06-01'}
-EVENT_END=${EVENT_END:-'2022-12-31'}
+EVENT_START=$(date --date="90 days ago" +%Y-%m-%d)
+EVENT_END=$(date --date="90 days" +%Y-%m-%d)
 
 get_public_pagination () {
   # Github limits to 100 results per query, so we need to break up the results into 100 result chunks. We do this by breaking it up into pages
