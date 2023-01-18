@@ -148,7 +148,7 @@ body:
         - [mod-zone-difficulty](https://github.com/azerothcore/mod-zone-difficulty)
         - [lua-carbon-copy](https://github.com/55Honey/Acore_CarbonCopy)
         - [lua-exchange-npc](https://github.com/55Honey/Acore_ExchangeNpc)
-        - [lua-custom-worldboss](https://github.com/55Honey/Acore_CustomWorldboss)
+        - [lua-event-scripts](https://github.com/55Honey/Acore_eventScripts)
         - [lua-level-up-reward](https://github.com/55Honey/Acore_LevelUpReward)
         - [lua-recruit-a-friend](https://github.com/55Honey/Acore_RecruitAFriend)
         - [lua-send-and-bind](https://github.com/55Honey/Acore_SendAndBind)
