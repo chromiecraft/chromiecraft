@@ -146,6 +146,7 @@ body:
         - [mod-weekend-xp](https://github.com/azerothcore/mod-weekend-xp)
         - [mod-instanced-worldbosses](https://github.com/nyeriah/mod-instanced-worldbosses)
         - [mod-zone-difficulty](https://github.com/azerothcore/mod-zone-difficulty)
+        - [mod-BreakingNewsOverride](https://github.com/AnchyDev/BreakingNewsOverride)
         - [lua-carbon-copy](https://github.com/55Honey/Acore_CarbonCopy)
         - [lua-exchange-npc](https://github.com/55Honey/Acore_ExchangeNpc)
         - [lua-event-scripts](https://github.com/55Honey/Acore_eventScripts)
