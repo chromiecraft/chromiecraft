@@ -108,7 +108,7 @@ body:
     attributes:
       label: AC rev. hash/commit
       value: |
-       https://github.com/chromiecraft/azerothcore-wotlk/commit/73e289ad95c551b9ba4822c6149bcc98c3422665
+       https://github.com/chromiecraft/azerothcore-wotlk/commit/0200a288cd89034a8b491253006a0b0055178deb
     validations:
       required: true
   - type: textarea
@@ -128,7 +128,6 @@ body:
         - [mod-bg-item-reward](https://github.com/azerothcore/mod-bg-item-reward)
         - [mod-cfbg](https://github.com/azerothcore/mod-cfbg)
         - [mod-chat-transmitter](https://github.com/azerothcore/mod-chat-transmitter)
-        - [mod-chromie-xp](https://github.com/azerothcore/mod-chromie-xp)
         - [mod-cta-switch](https://github.com/azerothcore/mod-cta-switch)
         - [mod-desertion-warnings](https://github.com/azerothcore/mod-desertion-warnings)
         - [mod-duel-reset](https://github.com/azerothcore/mod-duel-reset)
