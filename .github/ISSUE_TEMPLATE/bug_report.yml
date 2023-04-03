@@ -18,7 +18,7 @@ body:
       - esMX
       - frFR
       - ruRU
-      - other
+      - Other
     validations:
       required: true
   - type: dropdown
@@ -61,7 +61,7 @@ body:
     attributes:
       label: Expected Blizzlike Behaviour
       description: |
-        Describe how it should be working without the bug. Link to evidence if possible such as YouTube videos or WoWHead comments from the time.
+        Describe how it should be working without the bug. Link to evidence if possible such as YouTube videos or Wowhead comments from the time.
     validations:
       required: true
   - type: textarea
@@ -69,8 +69,8 @@ body:
     attributes:
       label: Source
       description: |
-        HEADS UP: include sources in your bug report which are relevant to the 3.3.5a game version, 
-        we will close any bug like "X should be changed to Y" reported without sources.
+        HEADS UP: include sources in your bug report which are relevant to the 3.3.5a game version.
+        We will close any bug like "X should be changed to Y" reported without sources.
     validations:
       required: true
   - type: textarea
@@ -79,11 +79,10 @@ body:
       label: Steps to reproduce the problem
       description: |
         Describe precisely how to reproduce the bug so we can fix it or confirm its existence:
-        - Which commands to use? Which NPC to teleport to?
-        - Do we need to have debug flags on Cmake?
-        - Do we need to look at the console while the bug happens?
+        - Which commands to use?
+        - Which NPC to teleport to?
         - Other steps
-        - Use the ingame commands to identify the unique GUID of an ore/herb/npc:    .npcinfo  /  .gobject near
+        - Use the in-game commands to identify the unique GUID of an ore/herb/NPC:    .npcinfo  /  .gobject near
       placeholder: |
         1. 
         2. 
@@ -126,12 +125,14 @@ body:
       value: |
         - [mod-ah-bot](https://github.com/azerothcore/mod-ah-bot)
         - [mod-bg-item-reward](https://github.com/azerothcore/mod-bg-item-reward)
+        - [mod-BreakingNewsOverride](https://github.com/AnchyDev/BreakingNewsOverride)
         - [mod-cfbg](https://github.com/azerothcore/mod-cfbg)
         - [mod-chat-transmitter](https://github.com/azerothcore/mod-chat-transmitter)
         - [mod-cta-switch](https://github.com/azerothcore/mod-cta-switch)
         - [mod-desertion-warnings](https://github.com/azerothcore/mod-desertion-warnings)
         - [mod-duel-reset](https://github.com/azerothcore/mod-duel-reset)
         - [mod-eluna](https://github.com/azerothcore/mod-eluna)
+        - [mod-instanced-worldbosses](https://github.com/nyeriah/mod-instanced-worldbosses)
         - [mod-ip-tracker](https://github.com/azerothcore/mod-ip-tracker)
         - [mod-low-level-arena](https://github.com/azerothcore/mod-low-level-arena)
         - [mod-low-level-rbg](https://github.com/azerothcore/mod-low-level-rbg)
@@ -143,12 +144,10 @@ body:
         - [mod-rdf-expansion](https://github.com/azerothcore/mod-rdf-expansion)
         - [mod-transmog](https://github.com/azerothcore/mod-transmog)
         - [mod-weekend-xp](https://github.com/azerothcore/mod-weekend-xp)
-        - [mod-instanced-worldbosses](https://github.com/nyeriah/mod-instanced-worldbosses)
         - [mod-zone-difficulty](https://github.com/azerothcore/mod-zone-difficulty)
-        - [mod-BreakingNewsOverride](https://github.com/AnchyDev/BreakingNewsOverride)
         - [lua-carbon-copy](https://github.com/55Honey/Acore_CarbonCopy)
-        - [lua-exchange-npc](https://github.com/55Honey/Acore_ExchangeNpc)
         - [lua-event-scripts](https://github.com/55Honey/Acore_eventScripts)
+        - [lua-exchange-npc](https://github.com/55Honey/Acore_ExchangeNpc)
         - [lua-level-up-reward](https://github.com/55Honey/Acore_LevelUpReward)
         - [lua-recruit-a-friend](https://github.com/55Honey/Acore_RecruitAFriend)
         - [lua-send-and-bind](https://github.com/55Honey/Acore_SendAndBind)
