@@ -115,7 +115,7 @@ body:
     attributes:
       label: Operating system
       value: |
-        Ubuntu 20.04
+        Ubuntu 22.04
     validations:
       required: true
   - type: textarea
