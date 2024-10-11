@@ -1,0 +1,103 @@
+name: Web Bug Report
+description: Report an issue with the ChromieCraft website or web applications.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug with the ChromieCraft website! Please provide as much detail as possible, and ensure all required fields are completed. Incomplete reports may be closed.
+  - type: input
+    id: title
+    attributes:
+      label: Bug Title
+      description: Briefly describe the issue (e.g., "Navbar not working on mobile devices").
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current Behaviour
+      description: |
+        Describe the current behaviour of the website. Include details such as:
+        - What page(s) are affected?
+        - Any error messages or console logs.
+      placeholder: |
+        Describe what is happening...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behaviour
+      description: |
+        Describe what you expected to happen instead. If relevant, provide links to any standards or documentation.
+      placeholder: |
+        Describe the expected result...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: |
+        Provide detailed steps to reproduce the issue:
+        - What actions did you take?
+        - What browser or device were you using?
+      placeholder: |
+        1. 
+        2. 
+        3.
+    validations:
+      required: true
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      description: Which browser were you using when the bug occurred?
+      options:
+      - Chrome
+      - Firefox
+      - Safari
+      - Edge
+      - Opera
+      - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: device
+    attributes:
+      label: Device
+      options:
+      - Desktop
+      - Tablet
+      - Mobile
+      - Other
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      description: Which operating system were you using?
+      placeholder: |
+        e.g., Windows 11, macOS Ventura, Ubuntu 22.04
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Extra Information
+      description: |
+        Any additional information that might help in diagnosing or fixing the issue (e.g., screenshots, video recordings, etc.).
+      placeholder: |
+        None
+    validations:
+      required: false
+  - type: textarea
+    id: url
+    attributes:
+      label: URL
+      description: Please provide the URL of the affected page, if applicable.
+      placeholder: |
+        https://chromiecraft.org/example-page
+    validations:
+      required: false
