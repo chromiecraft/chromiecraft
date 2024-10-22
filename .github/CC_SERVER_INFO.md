@@ -4,6 +4,7 @@ Ubuntu 20.04
 
 ##### MODULES:
 
+- [mod-1v1-arena](https://github.com/azerothcore/mod-1v1-arena)
 - [mod-ah-bot](https://github.com/azerothcore/mod-ah-bot)
 - [mod-anticheat](https://github.com/azerothcore/mod-anticheat)
 - [mod-arena-3v3-solo-queue](https://github.com/azerothcore/mod-arena-3v3-solo-queue)
@@ -24,6 +25,7 @@ Ubuntu 20.04
 - [mod-low-level-arena](https://github.com/azerothcore/mod-low-level-arena)
 - [mod-low-level-rbg](https://github.com/azerothcore/mod-low-level-rbg)
 - [mod-multi-client-check](https://github.com/azerothcore/mod-multi-client-check)
+- [mod-npc-spectator](https://github.com/gozzim/mod-npc-spectator)
 - [mod-progression-system](https://github.com/azerothcore/mod-progression-system)
 - [mod-pvp-titles](https://github.com/azerothcore/mod-pvp-titles)
 - [mod-pvpstats-announcer](https://github.com/azerothcore/mod-pvpstats-announcer)
