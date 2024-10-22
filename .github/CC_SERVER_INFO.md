@@ -10,7 +10,7 @@ Ubuntu 20.04
 - [mod-arena-3v3-solo-queue](https://github.com/azerothcore/mod-arena-3v3-solo-queue)
 - [mod-arena-replay](https://github.com/azerothcore/mod-arena-replay)
 - [mod-bg-item-reward](https://github.com/azerothcore/mod-bg-item-reward)
-- [mod-BreakingNewsOverride](https://github.com/AnchyDev/BreakingNewsOverride)
+- [mod-breaking-news-override](https://github.com/azerothcore/mod-breaking-news-override)
 - [mod-cfbg](https://github.com/azerothcore/mod-cfbg)
 - [mod-chat-transmitter](https://github.com/azerothcore/mod-chat-transmitter)
 - [mod-chromie-xp](https://github.com/azerothcore/mod-chromie-xp)
