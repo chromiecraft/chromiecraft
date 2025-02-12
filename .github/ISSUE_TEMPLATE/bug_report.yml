@@ -6,48 +6,6 @@ body:
       value: |
         Thank you for taking your time to fill out a bug report. Remember to fill out all fields including the title above. 
         An issue that is not properly filled out will be closed.
-  - type: dropdown
-    id: client
-    attributes:
-      label: What client do you play on?
-      options:
-      - enGB
-      - enUS
-      - deDE
-      - esES
-      - esMX
-      - frFR
-      - ruRU
-      - Other
-    validations:
-      required: true
-  - type: dropdown
-    id: faction
-    attributes:
-      label: Faction
-      options:
-      - Alliance
-      - Horde
-      - Both
-    validations:
-      required: true
-  - type: dropdown
-    id: phase
-    attributes:
-      label: "Content Phase:"
-      options:
-      - Generic
-      - 1-19
-      - 20-29
-      - 30-39
-      - 40-49
-      - 50-59
-      - '60'
-      - 61-64
-      - 65-69
-      - '70'
-    validations:
-      required: true
   - type: textarea
     id: current
     attributes:
