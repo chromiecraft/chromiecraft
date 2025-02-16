@@ -16,10 +16,9 @@ jobs:
           SOURCE_REPO: "azerothcore-wotlk"
           OUR_OWNER: "chromiecraft"
           OUR_REPO: "chromiecraft"
-          ISSUE_LIMIT: "20" # Defines how many issues should be checked
         run: |
           # Fetch the last 20 closed issues from the external repo
-          CLOSED_ISSUES=$(gh issue list -R "$REPO_OWNER/$SOURCE_REPO" --state closed --limit "$ISSUE_LIMIT" --json number,body)
+          CLOSED_ISSUES=$(gh issue list -R "$REPO_OWNER/$SOURCE_REPO" --state closed --limit 20 --json number,body)
 
           echo "Checking issues..."
           echo "$CLOSED_ISSUES" | jq -c '.[]' | while read issue; do
