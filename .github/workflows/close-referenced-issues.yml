@@ -20,11 +20,9 @@ jobs:
           # Fetch the last 20 closed issues from the external repo
           CLOSED_ISSUES=$(gh issue list -R "$REPO_OWNER/$SOURCE_REPO" --state closed --limit 20 --json number,body)
 
-          echo "$CLOSED_ISSUES" # debug
-
           echo "Checking issues..."            
           # Process only if JSON is valid
-          echo "$CLOSED_ISSUES" | jq -c '.[]' | while read issue; do
+          echo "$CLOSED_ISSUES" | jq -c '.[]' | while read -r issue; do
             ISSUE_NUMBER=$(echo "$issue" | jq -r '.number')
             BODY=$(echo "$issue" | jq -r '.body')
 
