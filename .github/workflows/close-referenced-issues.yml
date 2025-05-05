@@ -17,8 +17,8 @@ jobs:
           OUR_OWNER: "chromiecraft"
           OUR_REPO: "chromiecraft"
         run: |
-          # Fetch the last 100 closed issues from the external repo
-          CLOSED_ISSUES=$(gh issue list -R "$REPO_OWNER/$SOURCE_REPO" --state closed --search "sort:updated-desc" --limit 100 --json number,body)
+          # Fetch the last 400 closed issues from the external repo
+          CLOSED_ISSUES=$(gh issue list -R "$REPO_OWNER/$SOURCE_REPO" --state closed --search "sort:updated-desc" --limit 400 --json number,body)
 
           echo "Checking issues..."
           # Process only if JSON is valid
