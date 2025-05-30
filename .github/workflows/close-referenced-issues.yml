@@ -39,7 +39,7 @@ jobs:
               # Check if the issue exists in our repo and if it's open
               ISSUE_STATE=$(gh issue view "$ISSUE_NUM" -R "$OUR_OWNER/$OUR_REPO" --json state --jq '.state' 2>/dev/null || echo "NOT_FOUND")
 
-              COMMENT="Closing this issue as it was resolved upstream in [$REPO_OWNER/$SOURCE_REPO#$ISSUE_NUMBER](https://github.com/$REPO_OWNER/$SOURCE_REPO/issues/$ISSUE_NUMBER)"
+              COMMENT="Closing this issue as it was resolved upstream in https://github.com/$REPO_OWNER/$SOURCE_REPO/issues/$ISSUE_NUMBER"
 
               if [[ "$ISSUE_STATE" == "CLOSED" ]]; then
                 echo "Issue #$ISSUE_NUM is already closed. Skipping."
