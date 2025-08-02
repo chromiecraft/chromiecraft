@@ -1,8 +1,8 @@
-##### OPERATING SYSTEM:
+### Operating system
 
 Ubuntu 20.04
 
-##### MODULES:
+### Modules
 
 - [mod-1v1-arena](https://github.com/azerothcore/mod-1v1-arena)
 - [mod-ah-bot](https://github.com/azerothcore/mod-ah-bot)
@@ -43,10 +43,6 @@ Ubuntu 20.04
 - [lua-TempAnnouncements](https://github.com/55Honey/Acore_TempAnnouncements)
 - [lua-Zonecheck](https://github.com/55Honey/acore_Zonecheck)
 
-##### OTHER CUSTOMIZATIONS:
-
-None.
-
-##### SERVER:
+### Server
 
 ChromieCraft
