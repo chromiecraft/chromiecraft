@@ -1,0 +1,35 @@
+name: Append Server Info to New Issues
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  append-issue-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Read server info from CC_SERVER_INFO.md and append to issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = '.github/CC_SERVER_INFO.md';
+            
+            if (!fs.existsSync(path)) {
+              console.log(`File not found: ${path}`);
+              return;
+            }
+
+            const staticInfo = fs.readFileSync(path, 'utf8');
+
+            const issueNumber = context.issue.number;
+            const originalBody = context.payload.issue.body;
+
+            await github.rest.issues.update({
+              ...context.issue,
+              issue_number: issueNumber,
+              body: `${originalBody}\n${staticInfo}`
+            });
