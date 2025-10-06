@@ -14,8 +14,8 @@ env:
   ORG: 'chromiecraft'
   REPO: 'chromiecraft'
   API_URL_PREFIX: 'https://api.github.com'
-  MONTH_START: "2024-09-01"
-  MONTH_END: "2024-09-30"
+  MONTH_START: ${{ github.event.inputs.monthstart }}
+  MONTH_END: ${{ github.event.inputs.monthend }}
 
 jobs:
   github-monthly-report:
