@@ -18,7 +18,7 @@ EVENT_END=$(date --date="30 days" +%Y-%m-%d)
 
 get_public_pagination () {
   # Github limits to 100 results per query, so we need to break up the results into 100 result chunks. We do this by breaking it up into pages
-  public_pages=$(curl -g -H "Authorization: token ${GITHUB_TOKEN}" -I "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues?state=all&labels=Linked%20[AC]&per_page=100" | grep -Eo '&page=[0-9]+' | grep -Eo '[0-9]+' | tail -1;)
+  public_pages=$(curl -g -H "Authorization: token ${GITHUB_TOKEN}" -I "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues?state=all&labels=Confirmed&per_page=100" | grep -Eo '&page=[0-9]+' | grep -Eo '[0-9]+' | tail -1;)
   echo "${public_pages:-1}"
 }
 
@@ -31,7 +31,7 @@ repo_issues () {
   # Iterate through all pages in the sequence
   for PAGE in $(limit_public_pagination); do
       # Filter through results and return on issues within the date range, sort by the issue number 
-      for i in $(curl -g -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues?state=all&labels=Linked%20[AC]&page=${PAGE}&per_page=100" | jq -r 'map(select(.created_at | . >= "'"${EVENT_START}"'T00:00" and . <= "'"${EVENT_END}"'T23:59")) | sort_by(.number) | .[] | .number'); do
+      for i in $(curl -g -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues?state=all&labels=Confirmed&page=${PAGE}&per_page=100" | jq -r 'map(select(.created_at | . >= "'"${EVENT_START}"'T00:00" and . <= "'"${EVENT_END}"'T23:59")) | sort_by(.number) | .[] | .number'); do
 
         # Capture the event date from the timeline api
         EVENT_DATE=$(curl -H "Authorization: token ${GITHUB_TOKEN}" -s "${API_URL_PREFIX}/repos/${ORG}/${REPO}/issues/${i}/timeline" -H "Accept: application/vnd.github.mockingbird-preview+json" | jq -r 'map(select(.created_at | . >= "'"${MONTH_START}"'T00:00" and . <= "'"${MONTH_END}"'T23:59")) | .[] | select(.label.name=="Linked [AC]")')
