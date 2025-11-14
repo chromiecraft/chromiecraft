@@ -1,6 +1,6 @@
 ### Operating system
 
-Ubuntu 20.04
+Ubuntu 22.04
 
 ### Modules
 
@@ -49,3 +49,4 @@ Ubuntu 20.04
 ### Server
 
 ChromieCraft
+
