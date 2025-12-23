@@ -17,7 +17,7 @@ body:
   - type: textarea
     id: expected
     attributes:
-      label: Expected Blizzlike Behaviour
+      label: Expected Behaviour
       description: |
         Describe how it should be working without the bug. Link to evidence if possible such as YouTube videos or Wowhead comments from the time.
     validations:
