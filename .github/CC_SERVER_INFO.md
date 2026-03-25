@@ -34,6 +34,7 @@ Ubuntu 22.04
 - [mod-pvpstats-announcer](https://github.com/azerothcore/mod-pvpstats-announcer)
 - [mod-queue-list-cache](https://github.com/azerothcore/mod-queue-list-cache)
 - [mod-rdf-expansion](https://github.com/azerothcore/mod-rdf-expansion)
+- [mod-resurrection-scroll](https://github.com/azerothcore/mod-resurrection-scroll)
 - [mod-transmog](https://github.com/azerothcore/mod-transmog)
 - [mod-weekend-xp](https://github.com/azerothcore/mod-weekend-xp)
 - [mod-zone-difficulty](https://github.com/azerothcore/mod-zone-difficulty)
