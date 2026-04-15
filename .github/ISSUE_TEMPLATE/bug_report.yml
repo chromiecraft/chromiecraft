@@ -25,7 +25,7 @@ body:
   - type: textarea
     id: source
     attributes:
-      label: Source
+      label: Offical Sources (that prove or disprove) the issue being reported
       description: |
         Provide us with source comments, videos, blue posts. Things officially confirm your issue. 
         Example: A video of showing how this NPC should behave in 3.3.5a version. 
