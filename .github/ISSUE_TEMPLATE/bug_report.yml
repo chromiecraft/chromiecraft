@@ -75,7 +75,7 @@ body:
     attributes:
       label: AC rev. hash/commit
       value: |
-       https://github.com/chromiecraft/azerothcore-wotlk/commit/db2e1325d22324f346272d76177c0c0b38566e20
+       https://github.com/chromiecraft/azerothcore-wotlk/commit/ddbecc2badfcf661be23caa2f5d81bede09ff0a4
       description: |
         This field is used for the triage process, you don't need to edit this!
     validations:
