@@ -24,20 +24,19 @@ A **service desk** bridging players and contributors. Players (not contributors)
 
 A clear "close as stale" beats an indefinite "needs more investigation." The report can always be reopened if new information appears. Limbo helps no one.
 
-### Forwarding to AC is a high bar
+### Forwarding to AC: link freely, file carefully
 
-Do **not** forward unless confident the bug is real. Confidence comes from:
-- AC issue exists and is `Confirmed`
-- TrinityCore 3.3.5 branch has it filed/fixed
-- Report is self-evidently real (e.g. crash with stack trace, clearly reproducible logic error)
+Two different actions, two different bars:
+- **An AC issue already exists** (`Confirmed` *or* unconfirmed) → linking the CC issue to it is always fine. An existing AC report — even unconfirmed — *raises* confidence the bug is real (someone else hit it). A `Confirmed` one is strongest; if a contributor can reproduce an unconfirmed one, they should confirm it on AC.
+- **No AC issue exists yet** → filing a *new* AC issue is a higher bar: do it when the report is self-evidently a real bug (clear, reproducible **player** steps backed by a Wrath-era source) or matches a similar project (TC `3.3.5`, etc.). A bare "might be a bug" with nothing behind it does **not** earn a new AC issue — it stays on CC as `Unclear — flag for second opinion / staff review` (fresh) or `Unclear — close as stale (can be reopened)` (already tried).
 
-"Might be a bug" is not enough. Those stay on CC — either `Unclear — flag for second opinion / staff review` (fresh) or `Unclear — close as stale (can be reopened)` (already tried).
+(Reports come from **players, not developers** — expect repro steps, screenshots, videos, Wowhead/Wowpedia links, never stack traces or code.)
 
 ### Categories of "stay on CC" or "don't go to AC"
 
 - **CC-mod bugs:** stay on CC, link to mod repo. Mod maintainers fix.
-- **Module misconfiguration:** close on CC. Not AC's problem.
-- **Website bugs:** apply `Website` label. CC staff handles separately.
+- **Website bugs:** `Valid — report to CC Staff` — apply the `Website` label; the web team handles it.
+- **Module misconfiguration:** `Valid — report to CC Staff` — a real problem for the player; report the setting to CC Staff (not AC, not the mod repo).
 - **Client-side issues:** close (after confirming locale/mods with reporter).
 - **Inconclusive after fair attempt:** `Unclear — close as stale (can be reopened)`.
 - **Not a bug report (feature request / question / balance):** `Invalid — out of scope (not a bug report)`. Redirect to the right channel.

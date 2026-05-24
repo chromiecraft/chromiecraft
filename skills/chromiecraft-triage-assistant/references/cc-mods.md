@@ -1,6 +1,7 @@
 # CC Mods — Recognition and Routing
 
-ChromieCraft runs a number of mods on top of vanilla AzerothCore. Bugs caused by these mods are **still valid CC issues** — the CC report stays open. The additional action is to link/file them on the relevant mod's repo so the right maintainers see them. They do **not** belong on the AC tracker.
+ChromieCraft runs a number of mods on top of vanilla AzerothCore. Bugs caused by these mods are **still valid CC issues** — the CC report stays open.
+The additional action is to link/file them on the relevant mod's repo so the right maintainers see them. They do **not** belong on the AC tracker.
 
 Source of truth for the live mod list: <https://github.com/chromiecraft/chromiecraft/blob/main/.github/CC_SERVER_INFO.md>. When in doubt, check it.
 
@@ -9,19 +10,16 @@ Source of truth for the live mod list: <https://github.com/chromiecraft/chromiec
 1. During Parse & classify (Step 1) and the routing gate (Step 2), scan the report body and comments for any phrase in the "Recognition phrases" column.
 2. If a match is found, raise a CC-mod indicator and follow the routing in the same row.
 3. If the report's symptom *only makes sense* in a mod's context (e.g. a cross-faction interaction), raise the indicator even without an explicit phrase match.
-4. The recommendation in the dossier is `Valid — port to <mod> repo` (verbatim from `CASES.md`) — the CC issue is valid, the mod repo is where the fix happens. If instead the mod is fine but CC has it configured wrong, the verb is `Invalid — module misconfiguration`.
+4. The recommendation in the dossier is `Valid — port to <mod> repo` (verbatim from `CASES.md`) — the CC issue is valid, the mod repo is where the fix happens. If instead the mod is fine but CC has it configured wrong, the verb is `Valid — report to CC Staff` (a misconfiguration — still a valid report, just handled by CC Staff, not the mod repo).
 
-## Known mods
+## Relevant modules
 
 | Mod | Recognition phrases | Repo / Routing target |
 |---|---|---|
 | **CFBG** (Cross-Faction Battlegrounds) | "CFBG", "cross-faction BG", "Horde and Alliance in same BG", "mixed-faction battleground" | `azerothcore/mod-cfbg` |
-| **Cross-Faction Dungeons** | "cross-faction dungeon", "mixed-faction group", "Horde and Alliance in dungeon" | `azerothcore/mod-cfbg` (typically) — verify in CC_SERVER_INFO.md |
 | **Duel Reset** | "duel reset", "HP reset after duel", "duel cooldowns reset" | `azerothcore/mod-duel-reset` |
 | **Low-Level Arenas** | "low level arena", "arena at level X (<70)", "skirmish at low level" | Check CC_SERVER_INFO.md for current low-level-arena mod |
-| **Solo LFG** | "solo LFG", "queueing dungeon alone", "dungeon finder solo" | `azerothcore/mod-solo-lfg` |
 | **Progression System** | level-bracket mismatches — "vendor sells level 60 gear in level 40 bracket", "quest reward above current bracket cap", "mob/item from wrong phase" | `azerothcore/progression-system` |
-| **Auto-Balance** (if enabled on CC) | "dungeon scales weird", "boss too easy/hard for group size", "auto balance" | `azerothcore/mod-autobalance` |
 
 ## Progression-system: the big one
 

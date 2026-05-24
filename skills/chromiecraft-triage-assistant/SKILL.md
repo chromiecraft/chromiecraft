@@ -1,6 +1,6 @@
 ---
 name: chromiecraft-triage-assistant
-description: "First-aid triaging assistant for ChromieCraft bug reports. Use this skill whenever the user asks to triage, investigate, or first-aid a ChromieCraft issue (typically referenced as a CC issue or a github.com/chromiecraft/chromiecraft issue), or asks for help deciding whether a CC bug report is valid and where it should be ported. Also use this whenever the user mentions AzerothCore triaging, bug duplicate checking across AC/CC/TrinityCore/CMaNGOS/vMaNGOS, or wants a structured triage dossier produced for a WoW WotLK 3.3.5a private-server bug. The skill produces a markdown dossier with a TL;DR recommendation up top and an expandable evidence block below — it never decides for the human, it surfaces evidence so a contributor can confirm or override the recommendation quickly."
+description: "First-aid bug-triage assistant for ChromieCraft (CC), a gaming server built on AzerothCore. Use when asked to triage, investigate, or first-aid a ChromieCraft / github.com/chromiecraft/chromiecraft issue, to judge whether a CC bug report is valid and where it should be ported. Produces a markdown dossier that helps humans to triage bugs."
 ---
 
 # ChromieCraft Triage — First Aid
@@ -10,17 +10,27 @@ description: "First-aid triaging assistant for ChromieCraft bug reports. Use thi
 Bug triaging at ChromieCraft is simple:
 
 1. **Is this report valid?** (yes / no / unclear)
-2. **If valid, where does it go?** (AzerothCore, a mod repo, the website, or stays on CC)
+2. **If valid, where does it go?** (AzerothCore, a mod repo, or CC Staff — e.g. a website issue or a misconfiguration)
 
-Your job is to answer both, with evidence, in a markdown dossier a contributor can confirm in under two minutes. You never decide for the human and you never take an action — you **produce a dossier and suggest**. You do not close, link, label, or file anything.
+Your job is to answer both, with evidence, in a markdown dossier a contributor can confirm in under two minutes.
+You never decide for the human and you never take an action — you **produce a dossier and suggest**.
+You do not close, link, label, or file anything.
 
-Context: ChromieCraft is a WoW WotLK 3.3.5a private server built on [AzerothCore](https://github.com/azerothcore/azerothcore-wotlk). The [CC tracker](https://github.com/chromiecraft/chromiecraft) is where **players** (not contributors) report bugs. Contributors triage and port the valid ones. The full triaging guide is [here](https://www.azerothcore.org/wiki/guide-to-triaging).
+### Context
+ChromieCraft is a WoW WotLK 3.3.5a private server built on [AzerothCore](https://github.com/azerothcore/azerothcore-wotlk).
+The [CC tracker](https://github.com/chromiecraft/chromiecraft) is where **players** (not contributors) report bugs.
+Contributors triage and port the valid ones. The full triaging guide is [here](https://www.azerothcore.org/wiki/guide-to-triaging).
 
-## What the skill is (and is not)
+## What the skill is
 
-- **Agent-agnostic.** The skill is just this file plus its supporting markdown. Given a CC issue it produces a dossier — nothing else.
-- **Rendering is not the skill's concern.** How the dossier is delivered is set by whatever invokes the skill: a local **dry-run** prints it to the terminal; production posts it as a GitHub comment. Same dossier either way.
-- **Triggering, access control, and cost are not the skill's concern.** Who runs it and when is a deployment decision, outside this document.
+This skill is the triage *logic*. An agent (with tools/MCPs — GitHub, web, an AzerothCore DB/source MCP) does the actual work; 
+the skill tells that agent how to analyse a CC report and what dossier to produce. 
+It runs in one of two modes, chosen by whoever invokes it:
+
+- **Dry-run** — output the dossier as text to the invoker (for local testing and iteration).
+- **Production** — post the dossier as a comment on the GitHub issue.
+
+Same dossier either way. Triggering, access control, and cost are deployment concerns, outside this document.
 
 ## Hard rules
 
@@ -30,16 +40,23 @@ Context: ChromieCraft is a WoW WotLK 3.3.5a private server built on [AzerothCore
 4. **Low confidence → an `Unclear` verb.** Never pair a Valid/Invalid verb with Low confidence — it reads as confused.
 5. **Always include "What I checked" and "What I'm uncertain about."** Even on short answers. These are the trust mechanism and the audit trail.
 6. **Write the dossier in English.** Understand reports in any language, but always output English (the project's and AC's working language).
-7. **Wrath cutoff.** AC/CC target patch 3.3.5a. Wrath ran Oct 2008 – Oct 2010. Sources outside that window are not evidence unless they explicitly discuss Wrath.
+7. **Wrath cutoff.** AC/CC target patch 3.3.5a. Wrath ran Oct 2008 – Oct 2010. Sources outside that window could still be useful but not 100% reliable.
 
-## Tools you may have
+## Agent tools
 
-Inventory what you actually have before starting; note missing tools as limitations in the dossier.
+These are the tools the agent is **expected to have** and is **expected to use** — they are what turns a guess into an evidenced triage. Inventory them at the start of every run.
 
-Common toolset:
-- **GitHub** — search/read issues and PRs across `chromiecraft/chromiecraft`, `azerothcore/azerothcore-wotlk`, AC module repos, `TrinityCore/TrinityCore`, `cmangos/*`, `vmangos/*`. Also: read `chromiecraft/azerothcore-wotlk` (the read-only mirror of CC's live AC version) and fetch the live label sets of the CC and AC repos.
-- **Web search/fetch** — Wowhead (TBC + current), Wowpedia (with pre-Cata history), Wayback Machine, YouTube (with caveats — see `references/source-quality.md`).
-- **AzerothCore MCP** — world DB queries (`creature_template`, `quest_template`, `gameobject_template`, `smart_scripts`, `conditions`, `spell_dbc`, etc.) and AC source grep. **Best-effort:** when available it is the highest-value move; when absent or down, still produce an answer. If a DB/source check you could not run was the *deciding* factor, land on an `Unclear` verb rather than guessing.
+**When a tool is missing or errors, do all three:**
+1. **Finish the job anyway.** Produce the best dossier the working tools allow — a degraded dossier beats no dossier.
+2. **Flag it in the dossier.** Record which tool was unavailable or errored (and the error, if any) under "What I checked", so operators can spot and fix a broken tool. If it limited the verdict, repeat that under "What I'm uncertain about".
+3. **Don't guess past it.** If the check you couldn't run would have been *decisive*, lower confidence and prefer an `Unclear` verb over a confident guess.
+
+| Tool | Use it to |
+|---|---|
+| **GitHub** | Search/read issues & PRs across `chromiecraft/chromiecraft`, `azerothcore/azerothcore-wotlk`, AC module repos, and similar projects (`TrinityCore/TrinityCore`, `cmangos/*`, `vmangos/*`). Read `chromiecraft/azerothcore-wotlk` (the read-only mirror) for the exact AC version live on CC, and read the live CC/AC label sets. |
+| **Web search / fetch** | Wowhead (TBC + current), Wowpedia (pre-Cata history), Wayback Machine, YouTube — always weighed per `references/source-quality.md`. |
+| **AzerothCore DB (MCP)** | World DB queries (`creature_template`, `quest_template`, `gameobject_template`, `smart_scripts`, `conditions`, `spell_dbc`, …). The highest-value evidence whenever a verdict hinges on server data. |
+| **AzerothCore source code** | Read/grep the AC C++ and SQL (`azerothcore/azerothcore-wotlk`) to confirm logic and script behaviour — and as a fallback for DB questions when the MCP is down. |
 
 ## Process
 
@@ -53,9 +70,9 @@ New reports follow a known template. Parse its fields rather than treating the b
 - **`web_bug_report.yml` (website):** `Current/Expected Behaviour`, `Steps to Reproduce`, `Browser`, `Device`, `Operating System`, `URL`.
 
 Extract and flag:
-- **Entities**: quest/item/NPC/spell IDs and names, GUIDs, zones, coordinates.
+- **Entities**: quest/item/NPC/spell IDs and names, GUIDs, zones, coordinates, etc
 - **Symptom**: what happens vs. what was expected.
-- **Reporter's `AC rev. hash`**: what the *reporter* was running (the report's own field — used to understand their version, **not** as CC's current version; see Step 3).
+- **Reporter's `AC rev. hash`**: this field is auto-filled by the issue template (the player does not edit it), so it indicates the AC version CC was running roughly when the report was filed. Useful context — but CC updates ~weekly, so for the "already fixed" check use CC's *current* deployed version, which may be newer (see Step 3), not the value frozen in the report.
 - **Completeness**: are the required fields actually filled with usable content? Empty/low-quality required fields point toward `Unclear — request more info from reporter`.
 - **Routing/disqualifier flags**: which template was used (web template → strong Website signal), CC-mod mentions (`references/cc-mods.md`), website mentions, client-side red flags (`references/client-side-red-flags.md`), misconfiguration hints, prior triage attempts in comments.
 - **Multiple distinct bugs**: if the report bundles several unrelated bugs, note each — the recommendation will be to split (see Dossier template).
@@ -64,8 +81,8 @@ Extract and flag:
 
 If Step 1 raised a routing/disqualifier flag, resolve it before (or alongside) the validity hunt:
 
-- **Website** — arrival via `web_bug_report.yml`, or a website-only symptom (account portal, donations, forum, wiki, a chromiecraft.com URL). Strong but not conclusive: sanity-check there is no in-game symptom. → `Valid — Website`.
-- **CC mod** — a recognition phrase or mod-only symptom (`references/cc-mods.md`). Decide between a real mod bug (`Valid — port to <mod> repo`) and a CC misconfiguration (`Invalid — module misconfiguration`).
+- **Website** — arrival via `web_bug_report.yml`, or a website-only symptom (account portal, donations, forum, wiki, a chromiecraft.com URL). Strong but not conclusive: sanity-check there is no in-game symptom. → `Valid — report to CC Staff` (website case).
+- **CC mod** — a recognition phrase or mod-only symptom (`references/cc-mods.md`). Decide between a real mod bug (`Valid — port to <mod> repo`) and a CC misconfiguration (`Valid — report to CC Staff`) — both are valid reports, just different destinations.
 - **Client-side** — visual/display/tooltip/model/UI symptom (`references/client-side-red-flags.md`). Usually `Unclear — request more info from reporter` first (locale/mods), then `Invalid — client-side` once confirmed. Do **not** assume client-side just because a symptom is visual — many real server bugs manifest visually.
 - **Out of scope** — a feature request, question, or balance complaint rather than a bug → `Invalid — out of scope (not a bug report)`.
 
@@ -94,13 +111,14 @@ Scan `CASES.md` for the case your evidence matches; it gives the exact verb, con
 - `Medium` — one strong piece, or several weak ones pointing the same way.
 - `Low` — inconclusive. Verb must be one of the `Unclear` options.
 
+**Validity clear, routing uncertain?** If the bug is clearly real but the destination is not (e.g. AC vs a mod), still pick the most-likely destination verb, set confidence to reflect the *routing* doubt (Medium/Low), and explain the "validity clear, routing uncertain" split in "What I'm uncertain about." Reserve `Unclear — flag for second opinion / staff review` for when *validity itself* is undecided — not merely the routing.
+
 ## Dossier template
 
 Always produce this shape:
 
 ```markdown
-> 🤖 **Automated triage assistant.** This is a non-binding first-aid analysis to help a
-> contributor triage faster — not a decision. A human reviews and makes the final call.
+> 🤖 **Automated Bug-Triage Assistant (AI-generated).** First-aid notes to help a contributor triage faster — a human reviews and decides.
 
 ## CC#<NUMBER> — <short symptom>
 
@@ -112,21 +130,23 @@ Always produce this shape:
 <details>
 <summary>Evidence</summary>
 
+*Include only the rows that carry real signal for this report — omit the rest rather than padding with "none found". "What I checked" and "What I'm uncertain about" are always included.*
+
 ### Is this valid?
-- **Duplicates on CC:** <links + one-line relevance, or "none found">
-- **Already on AC:** <link + status (Confirmed/unconfirmed/closed), or "none found">
-- **Recently merged AC PRs:** <link + whether it's an ancestor of CC's deployed HEAD, or "none relevant">
-- **Other emulators (TC 3.3.5 / CMaNGOS / vMaNGOS):** <links + relevance, or "none found">
-- **DB / source findings:** <quoted rows or file:line, or "MCP unavailable" / "not investigated">
-- **Web sources (Wrath-era only):** <paraphrase + link, or "no Wrath-era sources found">
-- **Reporter's cited sources:** <assessment against source-quality.md, or "none / not usable">
+- **Duplicates on CC:** <links + one-line relevance>
+- **Already on AC:** <link + status (Confirmed / unconfirmed / closed)>
+- **Recently merged AC PRs:** <link + whether it's an ancestor of CC's deployed HEAD>
+- **Similar projects:** <links + relevance (TC `3.3.5` strongest)>
+- **DB / source findings:** <quoted rows or file:line>
+- **Web sources (Wrath-era only):** <paraphrase + link>
+- **Reporter's cited sources:** <assessment against source-quality.md>
 
 ### Where does it go?
-- **CC-mod indicators:** <none | mod name + recognition phrase>
-- **Website indicators:** <none | reason (e.g. filed via web template)>
-- **Client-side indicators:** <none | red flag + suggested question for reporter>
-- **Suggested CC-issue label:** <label that actually exists on the CC repo, or "none">
-- **Suggested AC categorization (when ported):** <existing AC bracket/Generic + category label, or "n/a">
+- **CC-mod indicators:** <mod name + recognition phrase>
+- **Website indicators:** <reason (e.g. filed via web template)>
+- **Client-side indicators:** <red flag + suggested question for reporter>
+- **Suggested CC-issue label:** <a label that exists on the CC repo>
+- **Suggested AC categorization (when ported):** <existing AC bracket/Generic + category label>
 
 ### What I checked
 - <brief list of tool calls / searches made — the audit trail>
@@ -138,7 +158,7 @@ Always produce this shape:
 ```
 
 Adaptations:
-- **Suggested labels** must be real. Fetch the current label sets from the CC and AC repos and only suggest labels that exist there. Never invent a label.
+- **Suggested labels** must be real. Fetch the current label sets from for the CC repository ( https://github.com/chromiecraft/chromiecraft/labels ) and for the AC repository ( https://github.com/azerothcore/azerothcore-wotlk/labels ) and only suggest labels that exist there. Never invent a label.
 - **DRAFT AC issue** — only for `High`-confidence `Valid — port to AC`, add a `<details><summary>DRAFT AC issue — review before filing</summary>` block with a ready-to-paste AC issue (clear repro, entities, Wrath-era sources, suggested bracket). Mark it clearly as a draft; the human reviews and submits.
 - **Multiple bugs** — if the report bundles several distinct bugs, set the top-line recommendation to splitting them into separate reports, and under "Is this valid?" enumerate each sub-bug with a one-line mini-verdict so none is triaged silently.
 
