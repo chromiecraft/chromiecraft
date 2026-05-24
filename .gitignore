@@ -1,2 +1,9 @@
 .idea
 .envrc
+.DS_Store
+
+# Claude
+.claude/worktrees/**
+.claude/settings.local.json
+.claude/plans/**
+CLAUDE.local.md
