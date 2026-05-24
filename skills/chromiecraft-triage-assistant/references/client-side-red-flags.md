@@ -33,17 +33,17 @@ If toggling the UI (`/console reloadui`), changing zones, or relogging fixes it 
 
 ## What to recommend
 
-For clear client-side issues:
+For clear client-side issues (verbs quoted verbatim from `CASES.md`):
 
-- **Pure display bug, no gameplay effect, locale/mods not yet asked about** → recommend `Request more info from reporter` and list the specific questions (locale? client mods? reproduces after `/console reloadui`?).
-- **Confirmed client-side after reporter responds in comments** → recommend `Close as invalid (client-side)`.
-- **Reporter has explicitly mentioned client mods causing it** → recommend `Close as invalid (client-side)` with high confidence.
+- **Pure display bug, no gameplay effect, locale/mods not yet asked about** → `Unclear — request more info from reporter` and list the specific questions (locale? client mods? reproduces after `/console reloadui`?).
+- **Confirmed client-side after reporter responds in comments** → `Invalid — client-side`.
+- **Reporter has explicitly mentioned client mods causing it** → `Invalid — client-side` with high confidence.
 
 ## What NOT to do
 
 - Do not classify as client-side just because the symptom is visual. Many real server bugs manifest visually (e.g. an NPC actually has the wrong faction in DB → it really is the wrong color on minimap).
 - Do not assume client-side without checking the DB / source first if the tools are available. A 30-second DB lookup can confirm whether the visual matches the data.
-- Do not short-circuit to `Close as invalid (client-side)` on first glance — the short-circuit is `Request more info`, and only after the reporter confirms locale/mods does it become a clean close.
+- Do not short-circuit to `Invalid — client-side` on first glance — the first move is `Unclear — request more info from reporter`, and only after the reporter confirms locale/mods does it become a clean `Invalid — client-side`.
 
 ## Curator notes
 

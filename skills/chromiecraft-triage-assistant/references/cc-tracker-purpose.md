@@ -31,7 +31,7 @@ Do **not** forward unless confident the bug is real. Confidence comes from:
 - TrinityCore 3.3.5 branch has it filed/fixed
 - Report is self-evidently real (e.g. crash with stack trace, clearly reproducible logic error)
 
-"Might be a bug" is not enough. Those stay on CC — either `Flag for second opinion / staff review` (fresh) or `Close as stale` (already tried).
+"Might be a bug" is not enough. Those stay on CC — either `Unclear — flag for second opinion / staff review` (fresh) or `Unclear — close as stale (can be reopened)` (already tried).
 
 ### Categories of "stay on CC" or "don't go to AC"
 
@@ -39,7 +39,8 @@ Do **not** forward unless confident the bug is real. Confidence comes from:
 - **Module misconfiguration:** close on CC. Not AC's problem.
 - **Website bugs:** apply `Website` label. CC staff handles separately.
 - **Client-side issues:** close (after confirming locale/mods with reporter).
-- **Inconclusive after fair attempt:** `Close as stale`. Can be reopened.
+- **Inconclusive after fair attempt:** `Unclear — close as stale (can be reopened)`.
+- **Not a bug report (feature request / question / balance):** `Invalid — out of scope (not a bug report)`. Redirect to the right channel.
 
 ### Tag signals to watch for
 

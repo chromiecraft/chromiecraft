@@ -1,10 +1,12 @@
 # CASES — Recommendation Lookup
 
-Operational lookup for every recommendation verb. One section per verb, in three groups: **Valid**, **Invalid**, **Unclear**.
+Operational lookup for every recommendation verb, and the **single source of truth for the verb strings**. One section per verb, in three groups: **Valid**, **Invalid**, **Unclear**. Every other document (SKILL.md, the references) must quote these verbs *verbatim* — never paraphrase or invent one.
 
 For each case: when it applies, evidence that justifies it, common false positives, example dossier snippet.
 
-After Tier 1 (and again after Tier 2 if needed), scan this file for the case your evidence matches. If no case matches cleanly, fall back to one of the `Unclear` verbs.
+During the routing gate and again after the validity investigation (see SKILL.md "Process"), scan this file for the case your evidence matches. If no case matches cleanly, fall back to one of the `Unclear` verbs.
+
+**The verbs (12):** `Valid — port to AC` · `Valid — port to <mod> repo` · `Valid — Website` · `Invalid — duplicate of <link>` · `Invalid — not a bug` · `Invalid — already fixed` · `Invalid — client-side` · `Invalid — module misconfiguration` · `Invalid — out of scope (not a bug report)` · `Unclear — request more info from reporter` · `Unclear — flag for second opinion / staff review` · `Unclear — close as stale (can be reopened)`.
 
 ---
 
@@ -31,7 +33,7 @@ Bug is real. Port it somewhere. CC tracker actions vary by destination.
 **False positives — do NOT use this verb when:**
 - The AC issue exists but is unconfirmed → use `Unclear — flag for second opinion / staff review`.
 - Only a TC master/cata/mop branch issue matches (wrong branch) → keep investigating.
-- The bug might be a CC-mod issue or misconfiguration → check Tier 0 indicators first.
+- The bug might be a CC-mod issue or misconfiguration → check the routing-gate indicators first.
 
 **Confidence:** typically `High` (Confirmed elsewhere) or `Medium` (self-evident but unverified).
 
@@ -53,7 +55,7 @@ The CC issue should be linked to AC#5678 rather than creating a new AC ticket.
 - Leave the CC issue open with a link to the mod repo.
 
 **Evidence that justifies it:**
-- Tier 0 flagged a CC-mod indicator (see `references/cc-mods.md`).
+- The routing gate flagged a CC-mod indicator (see `references/cc-mods.md`).
 - Reproduction depends on the mod being active.
 - The symptom only makes sense in the mod's context (cross-faction, low-level arena, etc.).
 
@@ -142,19 +144,22 @@ phrasing. This report adds no new information.
 
 ### `Invalid — already fixed`
 
-**When it applies:** a merged AC PR clearly fixes this issue AND CC's deployed hash is newer than the merge.
+**When it applies:** a merged AC PR clearly fixes this issue AND that fix is **actually live on CC now**.
+
+**Determining "live on CC now":** CC's current deployed version is the **HEAD of `chromiecraft/azerothcore-wotlk`** (the authoritative read-only mirror). The fix counts as deployed only if the fixing PR's merge commit is an **ancestor of** that HEAD. The report's own `AC rev. hash` field tells you what the *reporter* was running, not what's live now — do not use it for this test. A merge *date* being earlier than something is **not** evidence of inclusion.
 
 **Action by the contributor:** close, linking the AC PR.
 
 **Evidence that justifies it:**
 - AC PR exists, is merged, and addresses the reported symptom.
-- CC's deployed version hash is *newer* than the PR's merge date.
+- The PR's merge commit is an ancestor of CC's deployed `chromiecraft/azerothcore-wotlk` HEAD.
 
 **False positives — do NOT use this verb when:**
-- CC's hash is *older* than the merge → the bug can still legitimately appear on CC. Do **not** short-circuit; treat as if the fix doesn't exist yet for CC.
+- The fix is **not** an ancestor of CC's deployed HEAD → the bug can still legitimately appear on CC. Do **not** short-circuit; treat as if the fix doesn't exist yet for CC.
 - PR is merged but doesn't actually fix the reported scenario (only a related case).
+- You cannot determine CC's deployed HEAD (mirror unreachable) → don't guess; this becomes an `Unclear` call.
 
-**Confidence:** `High` only when PR diff clearly covers the symptom; `Medium` otherwise.
+**Confidence:** `High` only when the PR diff clearly covers the symptom *and* you confirmed ancestry; `Medium` otherwise.
 
 ### `Invalid — client-side`
 
@@ -188,6 +193,34 @@ phrasing. This report adds no new information.
 - Vanilla AC bug that only happens with the mod enabled → keep investigating.
 
 **Confidence:** `High` only if you can clearly identify the misconfigured setting; `Medium` otherwise.
+
+### `Invalid — out of scope (not a bug report)`
+
+**When it applies:** the report is not a bug at all — it's a feature request / suggestion ("mounts should be account-wide"), a question ("how do I get to Naxxramas?"), or a balance complaint ("this boss is too hard"). The tracker is for bug reports; these belong elsewhere.
+
+**Distinguish from `Invalid — not a bug`:** `not a bug` means the reported behaviour *is a real in-game behaviour that is actually correct* per Wrath-era sources (the reporter misunderstood mechanics). `out of scope` means there is *no bug being reported in the first place*. Different reply, different evidence.
+
+**Action by the contributor:** close politely, redirecting the reporter to the right channel (e.g. Discord / suggestions). Do **not** link to AC.
+
+**Evidence that justifies it:**
+- The report asks for new/changed behaviour rather than describing something broken.
+- It's a question or a "please make X easier/harder" balance opinion.
+- No description of a malfunction vs. expected 3.3.5a behaviour.
+
+**False positives:**
+- A balance complaint that actually points at a real DB/mechanic error (e.g. a boss with the wrong health value) → that *is* a bug; investigate.
+- "It should work like retail-now" → that's `Invalid — not a bug` (out-of-patch expectation), not out of scope.
+
+**Confidence:** typically `High` — bug-report vs. not is usually clear. Lower it if the report is ambiguous between a suggestion and a real defect.
+
+**Example snippet:**
+```
+**Recommendation:** Invalid — out of scope (not a bug report)
+**Confidence:** High
+
+This is a feature request (account-wide mounts), not a bug. Suggest closing and redirecting the
+reporter to the suggestions channel on Discord.
+```
 
 ---
 

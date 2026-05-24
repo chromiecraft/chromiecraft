@@ -6,10 +6,10 @@ Source of truth for the live mod list: <https://github.com/chromiecraft/chromiec
 
 ## How to use this file
 
-1. During Tier 0, scan the report body and comments for any phrase in the "Recognition phrases" column.
+1. During Parse & classify (Step 1) and the routing gate (Step 2), scan the report body and comments for any phrase in the "Recognition phrases" column.
 2. If a match is found, raise a CC-mod indicator and follow the routing in the same row.
 3. If the report's symptom *only makes sense* in a mod's context (e.g. a cross-faction interaction), raise the indicator even without an explicit phrase match.
-4. The recommendation in the dossier is `Link to mod repo and keep CC issue open` — the CC issue is valid, the mod repo is where the fix happens.
+4. The recommendation in the dossier is `Valid — port to <mod> repo` (verbatim from `CASES.md`) — the CC issue is valid, the mod repo is where the fix happens. If instead the mod is fine but CC has it configured wrong, the verb is `Invalid — module misconfiguration`.
 
 ## Known mods
 

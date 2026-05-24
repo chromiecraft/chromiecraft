@@ -34,7 +34,7 @@ When you see conflicts:
 - Note the conflict in the dossier rather than picking a side.
 - If one source is sniff data and the other is a Wowhead comment, weight the sniff.
 - If one source is Wrath-era and the other is post-Cata, the Wrath-era source wins.
-- If you genuinely cannot resolve it, that's a `Needs human investigation` signal — lower the confidence.
+- If you genuinely cannot resolve it, that's an `Unclear — flag for second opinion / staff review` signal — lower the confidence.
 
 ## When you find nothing
 
