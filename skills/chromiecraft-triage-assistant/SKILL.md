@@ -1,6 +1,10 @@
 ---
 name: chromiecraft-triage-assistant
 description: "First-aid bug-triage assistant for ChromieCraft (CC), a gaming server built on AzerothCore. Use when asked to triage, investigate, or first-aid a ChromieCraft / github.com/chromiecraft/chromiecraft issue, to judge whether a CC bug report is valid and where it should be ported. Produces a markdown dossier that helps humans to triage bugs."
+license: AGPL-3.0
+metadata:
+  author: Francesco Borzì
+  version: "1.0"
 ---
 
 # ChromieCraft Triage — First Aid
@@ -40,7 +44,7 @@ Same dossier either way. Triggering, access control, and cost are deployment con
 4. **Low confidence → an `Unclear` verb.** Never pair a Valid/Invalid verb with Low confidence — it reads as confused.
 5. **Always include "What I checked" and "What I'm uncertain about."** Even on short answers. These are the trust mechanism and the audit trail.
 6. **Write the dossier in English.** Understand reports in any language, but always output English (the project's and AC's working language).
-7. **Wrath cutoff.** AC/CC target patch 3.3.5a. Wrath ran Oct 2008 – Oct 2010. Sources outside that window could still be useful but not 100% reliable.
+7. **Wrath cutoff.** AC/CC target patch 3.3.5a (Wrath, Oct 2008 – Oct 2010). Weigh out-of-window sources cautiously — see `references/source-quality.md`.
 
 ## Agent tools
 
@@ -94,7 +98,7 @@ Run cheapest-decisive-first; parallelize independent checks:
 
 1. **CC duplicate search** — `chromiecraft/chromiecraft` issues (open + recently closed) for the extracted entities. Same entities **and** same symptom → `Invalid — duplicate of <link>`.
 2. **AC search** — `azerothcore/azerothcore-wotlk` issues *and* recently merged PRs. Record whether matching AC issues are `Confirmed` or unconfirmed.
-   - **Already fixed?** Determine CC's *current* deployed version from **HEAD of `chromiecraft/azerothcore-wotlk`** (the authoritative read-only mirror — not the report's hash, not the template default). A fix counts as `Invalid — already fixed` only if the fixing PR's merge commit is an **ancestor of** that HEAD (i.e. actually live on CC). A merge *date* earlier than something is **not** sufficient.
+   - **Already fixed?** A fix only counts if it's actually live on CC: the fixing PR's merge commit must be an **ancestor of** HEAD of `chromiecraft/azerothcore-wotlk` (not the report's hash, not a merge *date*). Full test in `CASES.md` → `Invalid — already fixed`.
 3. **Other emulators** — same bug is often filed already, sometimes with a fix.
    - `TrinityCore/TrinityCore` — **`3.3.5` branch only**; treat other branches as weak evidence.
    - `cmangos/*`, `vmangos/*`.

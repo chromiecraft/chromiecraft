@@ -2,7 +2,7 @@
 
 Operational lookup for every recommendation verb, and the **single source of truth for the verb strings**. One section per verb, in three groups: **Valid**, **Invalid**, **Unclear**. Every other document (SKILL.md, the references) must quote these verbs *verbatim* — never paraphrase or invent one.
 
-For each case: when it applies, evidence that justifies it, common false positives, example dossier snippet.
+For each case: when it applies, the evidence that justifies it, common false positives, an example snippet.
 
 During the routing gate and again after the validity investigation (see SKILL.md "Process"), scan this file for the case your evidence matches. If no case matches cleanly, fall back to one of the `Unclear` verbs.
 
@@ -16,24 +16,21 @@ Bug is real. Port it somewhere. CC tracker actions vary by destination.
 
 ### `Valid — port to AC`
 
-**When it applies:** the report is a **real bug** (a genuine problem players hit on CC) **and** the cause is vanilla AzerothCore behaviour — not a mod, the website, or a CC misconfiguration. Validity is about whether the problem is real; this verb is the *routing* decision that the fix belongs in AC main. Signals that point here:
-- A matching AC issue already exists — `Confirmed` (strongest) or even unconfirmed (someone else hit it too, which already raises the odds the bug is real).
-- The same bug is filed and/or fixed on a similar project — TrinityCore (`3.3.5` branch), cmangos-wotlk, etc.
-- The report is self-evidently a real bug: clear, reproducible steps plus a credible Wrath-era source showing the behaviour should differ. Remember reports come from **players, not developers** — expect repro steps, screenshots, videos, and Wowhead/Wowpedia links, *not* stack traces, logs, or code.
+**When it applies:** the report is a **real bug** (a genuine problem players hit on CC) **and** the cause is vanilla AzerothCore — not a mod, the website, or a CC misconfiguration. Validity is whether the problem is real; this verb is the *routing* call that the fix belongs in AC main.
+
+**Evidence (each piece raises confidence — they stack):**
+- A matching **AC issue**: `Confirmed` is strongest, but **unconfirmed is still positive** — it means others hit the same bug, more reassuring than no AC issue at all.
+- The same bug **filed and/or fixed** on a **similar project**: TC `3.3.5` branch (strongest), cmangos-wotlk, etc. A fix existing elsewhere is itself evidence.
+- A **self-evidently real** report: clear, reproducible steps plus a credible Wrath-era source showing the behaviour should differ. Reports come from **players, not developers** — expect repro steps, screenshots, videos, Wowhead/Wowpedia links, *not* stack traces, logs, or code.
 
 **Action by the contributor:**
-- If an AC issue already exists → link the CC issue to it. Leave a comment on the AC issue to confirm it. Do **not** file a new one.
+- An AC issue already exists → link the CC issue to it and comment there to confirm. Do **not** file a new one.
 - Otherwise → file a new AC issue, link the CC issue to it.
 
-**Evidence that justifies it (each piece raises confidence — they stack):**
-- A matching AC issue. `Confirmed` is strongest; **unconfirmed is still positive** — it means others hit the same bug, which is more reassuring than no AC issue at all.
-- A matching issue/PR on a similar project. TC `3.3.5` branch (or comparable) is strongest.
-- A clear, reproducible player-described symptom backed by a credible Wrath-era source.
-
 **False positives — do NOT use this verb when:**
-- The cause is actually a CC mod → `Valid — port to <mod> repo`. (Still a valid report — just a different destination.)
-- The cause is a CC misconfiguration → route to CC Staff (see the misconfiguration case). (Still a valid report — just a different destination.)
-- The only match is on a **non-`3.3.5`** branch of another project (e.g. TC master/cata): treat it as *weak* evidence — behaviour can differ across expansions, so it raises suspicion but doesn't by itself confirm a 3.3.5a bug. Keep weighing other signals; don't discard it either.
+- The cause is a CC mod → `Valid — port to <mod> repo`. (Still valid — different destination.)
+- The cause is a CC misconfiguration → `Valid — report to CC Staff`. (Still valid — different destination.)
+- The only match is on a **non-`3.3.5`** branch (e.g. TC master/cata): treat it as *weak* evidence — behaviour can differ across expansions, so it raises suspicion but doesn't confirm a 3.3.5a bug. Keep weighing other signals; don't discard it either.
 
 **Confidence:** `High` with a `Confirmed` AC issue or strong converging evidence; `Medium` for an unconfirmed match or a self-evident but unverified report.
 
@@ -51,18 +48,16 @@ still be good news — a contributor who can reproduce the bug should confirm it
 
 **When it applies:** the bug is in a CC-specific mod (not vanilla AC) and is a real bug (not misconfiguration). The CC issue stays open — it's a valid CC bug; the mod repo gets the technical fix.
 
-**Action by the contributor:**
-- Link/file the issue on the mod's repo (e.g. `azerothcore/mod-cfbg`).
-- Leave the CC issue open with a link to the mod repo.
-
 **Evidence that justifies it:**
 - The routing gate flagged a CC-mod indicator (see `references/cc-mods.md`).
 - Reproduction depends on the mod being active.
 - The symptom only makes sense in the mod's context (cross-faction, low-level arena, etc.).
 
+**Action by the contributor:** link/file the issue on the mod's repo (e.g. `azerothcore/mod-cfbg`); leave the CC issue open with a link to it.
+
 **False positives:**
-- Mod is fine, CC has it configured wrong → `Valid — report to CC Staff` (a misconfiguration: still a valid report, just routed to CC Staff instead of the mod repo).
-- Symptom mentions a mod incidentally but the bug is in vanilla behavior → keep investigating.
+- Mod is fine, CC has it configured wrong → `Valid — report to CC Staff` (a misconfiguration, just routed to CC Staff instead of the mod repo).
+- Symptom mentions a mod incidentally but the bug is in vanilla behaviour → keep investigating.
 
 **Confidence:** `High` if the mod indicator is unambiguous; `Medium` if inferred.
 
@@ -78,17 +73,13 @@ factions. The fix belongs in mod-cfbg; the CC issue stays open, linked to the mo
 
 ### `Valid — report to CC Staff`
 
-**When it applies:** the report is a **real problem**, but the fix is neither AC's nor a mod repo's — CC Staff handles it out-of-band. Two cases (name which one in the dossier sentence):
-- **Website** — the bug is about the CC website (account portal, donations page, forum, wiki, a chromiecraft.com URL), not the game server.
-- **Module misconfiguration** — a CC mod itself works correctly, but CC has it configured wrong (wrong `.conf` values, a mod enabled in a bracket it shouldn't be). Rare, but it happens — and it's a *real* problem for the player, so the report is **valid**, not invalid.
+**When it applies:** the report is a **real problem**, but the fix is neither AC's nor a mod repo's — CC Staff handles it out-of-band. Two cases (name which in the dossier sentence):
+- **Website** — the bug is about the CC website (account portal, donations, forum, wiki, a chromiecraft.com URL), not the game server. Arrival via `web_bug_report.yml` is a strong signal; sanity-check there's no in-game symptom.
+- **Module misconfiguration** — a CC mod works correctly but CC has it configured wrong (wrong `.conf` values, a mod enabled in a bracket it shouldn't be). Rare, but a *real* problem for the player, so the report is **valid**, not invalid. Confirm by: the mod's documented behaviour matches CC's behaviour under the current config, and the bug disappears under default mod config.
 
 **Action by the contributor:**
-- **Website:** apply the `Website` label and report it to CC Staff on Discord; the web team takes it from there. Do **not** link to AC.
+- **Website:** apply the `Website` label and report to CC Staff on Discord; the web team takes it from there. Do **not** link to AC.
 - **Misconfiguration:** report the wrong setting to CC Staff out-of-band, then close the CC issue. Do **not** link to AC; do **not** file on the mod repo.
-
-**Evidence that justifies it:**
-- *Website:* a chromiecraft.com URL, account registration, donation flow, forum, etc.; no in-game symptom. (Arrival via `web_bug_report.yml` is a strong signal.)
-- *Misconfiguration:* the mod's documented behaviour matches CC's behaviour given the current config; the bug disappears under default mod config.
 
 **False positives:**
 - Account/login problem that's actually a server-auth bug → not a website issue; keep investigating.
@@ -110,23 +101,21 @@ web report template). Apply the `Website` label and flag CC Staff on Discord; do
 
 ## Invalid
 
-**"Invalid" here means "close the CC issue" — not necessarily "the bug isn't real."** Two kinds live in this group: the report isn't a real problem (`not a bug`, `out of scope`), **or** the bug may well be real but there's nothing further for CC to do (`duplicate` — already tracked on CC; `already fixed` — already resolved; `client-side` — not fixable server-side). Either way, the CC issue is closed with the reason.
+**"Invalid" means "close the CC issue" — not necessarily "the bug isn't real."** Two kinds live here: the report isn't a real problem (`not a bug`, `out of scope`), **or** the bug may well be real but there's nothing further for CC to do (`duplicate` — already tracked on CC; `already fixed` — already resolved; `client-side` — not fixable server-side). Either way, close the CC issue with the reason.
 
 ### `Invalid — duplicate of <link>`
 
-**When it applies:** another CC issue already describes the **same problem**, open or recently closed. ("Same problem" — the same underlying bug — not merely the same entity; see false positives.)
+**When it applies:** another CC issue already describes the **same problem** (the same underlying bug — not merely the same entity; see false positives), open or recently closed.
 
-**CC-internal only.** "Duplicate" means *another **CC** report* for the same problem (players are expected to search CC before filing). A matching report on **AC or a similar project is NOT a duplicate** — it's *positive* evidence the bug is real and routes to `Valid — port to AC`, not here. The `<link>` in this verb is always a CC issue.
+**CC-internal only.** "Duplicate" means *another **CC** report* (players are expected to search CC before filing). A matching report on **AC or a similar project is NOT a duplicate** — it's *positive* evidence the bug is real and routes to `Valid — port to AC`. The `<link>` here is always a CC issue.
+
+**Evidence that justifies it:** same quest/item/NPC/spell ID **and** same described symptom; reporter phrasing often overlaps with the original, sometimes verbatim.
 
 **Action by the contributor:** close the CC issue, linking the original.
 
-**Evidence that justifies it:**
-- Same quest/item/NPC/spell ID and same described symptom.
-- Reporter phrasing often overlaps with the original — sometimes verbatim.
-
 **False positives — do NOT call duplicate when:**
 - Title looks similar but entities differ.
-- Same entity but different symptom (e.g. both about NPC X, but one is "wrong faction" and one is "missing gossip option").
+- Same entity but different symptom (both about NPC X, but one is "wrong faction" and one is "missing gossip option").
 - The "duplicate" was closed years ago with no resolution and no clear reason → may be stale rather than duplicate; consult.
 
 **Confidence:** `High` if entities + symptom both match; `Medium` if one strongly matches and the other is plausible.
@@ -142,14 +131,14 @@ phrasing. This report adds no new information.
 
 ### `Invalid — not a bug`
 
-**When it applies:** the reported behavior is actually correct per 3.3.5a / Wrath-era sources, or the reporter misunderstood game mechanics.
-
-**Action by the contributor:** close with an explanation citing the source.
+**When it applies:** the reported behaviour is actually correct per 3.3.5a / Wrath-era sources, or the reporter misunderstood game mechanics.
 
 **Evidence that justifies it:**
-- Wrath-era Wowhead/Wowpedia/sniff sources confirm the behavior is intended.
+- Wrath-era Wowhead/Wowpedia/sniff sources confirm the behaviour is intended.
 - AC DB matches the expected configuration.
-- Reporter's expectation is based on Classic, TBC, or post-Cata behavior (out of scope).
+- Reporter's expectation is based on Classic, TBC, or post-Cata behaviour (out of scope).
+
+**Action by the contributor:** close with an explanation citing the source.
 
 **False positives:**
 - "It works this way" with no source → not enough; investigate further.
@@ -159,18 +148,13 @@ phrasing. This report adds no new information.
 
 ### `Invalid — already fixed`
 
-**When it applies:** a recently merged AC PR clearly fixes this issue AND that fix is **actually live on CC now**.
+**When it applies:** a recently merged AC PR clearly fixes this issue AND that fix is **actually live on CC now**. This is the single source of truth for the "live on CC" test, referenced from SKILL.md:
 
-**Determining "live on CC now":** CC's current deployed version is the **HEAD of `chromiecraft/azerothcore-wotlk`** (the authoritative read-only mirror).
-The fix counts as deployed only if the fixing PR's merge commit is an **ancestor of** that HEAD.
-The report's own `AC rev. hash` field tells you what the *reporter* was running, not what's live now — do not use it for this test.
-A merge *date* being earlier than something is **not** evidence of inclusion.
+> CC's current deployed version is the **HEAD of `chromiecraft/azerothcore-wotlk`** (the authoritative read-only mirror). The fix counts as deployed only if the fixing PR's merge commit is an **ancestor of** that HEAD. The report's own `AC rev. hash` tells you what the *reporter* was running, not what's live now — do not use it for this test. A merge *date* being earlier than something is **not** evidence of inclusion.
+
+**Evidence that justifies it:** AC PR exists, is merged, addresses the reported symptom, and its merge commit is an ancestor of CC's deployed HEAD.
 
 **Action by the contributor:** close, linking the AC PR.
-
-**Evidence that justifies it:**
-- AC PR exists, is merged, and addresses the reported symptom.
-- The PR's merge commit is an ancestor of CC's deployed `chromiecraft/azerothcore-wotlk` HEAD.
 
 **False positives — do NOT use this verb when:**
 - The fix is **not** an ancestor of CC's deployed HEAD → the bug can still legitimately appear on CC. Do **not** short-circuit; treat as if the fix doesn't exist yet for CC.
@@ -181,14 +165,14 @@ A merge *date* being earlier than something is **not** evidence of inclusion.
 
 ### `Invalid — client-side`
 
-**When it applies:** the symptom is purely client-side (display, tooltip, model, texture, UI) — not fixable by the server.
-
-**Action by the contributor:** close, explaining it's a client-side issue.
+**When it applies:** the symptom is purely client-side (display, tooltip, model, texture, UI) — not fixable by the server. See `references/client-side-red-flags.md`.
 
 **Evidence that justifies it:**
-- Reporter has already confirmed running graphics mods or non-enUS locale.
+- Reporter has already confirmed running graphics mods or a non-enUS locale.
 - The symptom is visual-only with no gameplay effect (e.g. wrong tooltip value but correct actual outcome).
 - AC DB confirms the underlying data is correct.
+
+**Action by the contributor:** close, explaining it's a client-side issue.
 
 **False positives:**
 - Visual symptom without confirmation from reporter → use `Unclear — request more info from reporter` first.
@@ -198,16 +182,16 @@ A merge *date* being earlier than something is **not** evidence of inclusion.
 
 ### `Invalid — out of scope (not a bug report)`
 
-**When it applies:** the report is not a bug at all — it's a feature request / suggestion ("mounts should be account-wide"), a question ("how do I get to Naxxramas?"), or a balance complaint ("this boss is too hard"). The tracker is for bug reports; these belong elsewhere.
+**When it applies:** the report is not a bug at all — a feature request / suggestion ("mounts should be account-wide"), a question ("how do I get to Naxxramas?"), or a balance complaint ("this boss is too hard"). The tracker is for bug reports; these belong elsewhere.
 
-**Distinguish from `Invalid — not a bug`:** `not a bug` means the reported behaviour *is a real in-game behaviour that is actually correct* per Wrath-era sources (the reporter misunderstood mechanics). `out of scope` means there is *no bug being reported in the first place*. Different reply, different evidence.
-
-**Action by the contributor:** close politely, redirecting the reporter to the right channel (e.g. Discord / suggestions). Do **not** link to AC.
+**Distinguish from `Invalid — not a bug`:** `not a bug` means the reported behaviour *is a real in-game behaviour that is actually correct* per Wrath-era sources (reporter misunderstood mechanics). `out of scope` means there is *no bug being reported in the first place*. Different reply, different evidence.
 
 **Evidence that justifies it:**
 - The report asks for new/changed behaviour rather than describing something broken.
-- It's a question or a "please make X easier/harder" balance opinion.
+- It's a question, or a "please make X easier/harder" balance opinion.
 - No description of a malfunction vs. expected 3.3.5a behaviour.
+
+**Action by the contributor:** close politely, redirecting the reporter to the right channel (e.g. Discord / suggestions). Do **not** link to AC.
 
 **False positives:**
 - A balance complaint that actually points at a real DB/mechanic error (e.g. a boss with the wrong health value) → that *is* a bug; investigate.
@@ -232,19 +216,15 @@ Cannot determine validity yet. The CC tracker is a service desk — pick one of 
 
 ### `Unclear — request more info from reporter`
 
-**When it applies:** the report is missing information the bot or a human triager would need to decide. This is for **fresh** reports that haven't been asked for info before.
+**When it applies:** a **fresh** report (not asked for info before) missing information the bot or a human triager would need to decide.
+
+**Evidence that justifies it:** missing version hash; missing repro steps or unclear symptom; visual-only symptom without locale/mods confirmation; vague entity references ("the NPC in Stormwind" — which one?).
 
 **Action by the contributor:** comment on the CC issue asking the specific questions; tag as "Waiting for Feedback" per the triaging guide.
 
-**Evidence that justifies it:**
-- Missing version hash.
-- Missing reproduction steps or unclear symptom.
-- Visual-only symptom without locale/mods confirmation.
-- Vague entity references ("the NPC in Stormwind" — which one?).
-
 **False positives — do NOT use this verb when:**
 - Reporter has already been asked once and didn't respond meaningfully → `Unclear — close as stale`.
-- The report is detailed enough to investigate; the bot just hit a tool limitation → that's `Unclear — flag for second opinion / staff review` instead.
+- The report is detailed enough to investigate; the bot just hit a tool limitation → `Unclear — flag for second opinion / staff review`.
 
 **Confidence:** typically `Low` (you're explicitly asking because you don't know).
 
@@ -262,15 +242,11 @@ whether any graphics/UI mods are installed. Ask the reporter:
 
 ### `Unclear — flag for second opinion / staff review`
 
-**When it applies:** the report is detailed enough to investigate, the bot found *some* evidence but not enough to conclude, and no prior triage attempt has failed. Often signals that human eyes need to look — possibly with tools the bot lacks (PTR access, in-game repro).
+**When it applies:** the report is detailed enough to investigate, the bot found *some* evidence but not enough to conclude, and no prior triage attempt has failed. Often signals that human eyes are needed — possibly with tools the bot lacks (PTR access, in-game repro).
 
-**Action by the contributor:** tag the CC issue as `Needs second opinion` or `Needs staff review` per the triaging guide.
+**Evidence that justifies it:** an AC issue exists but is unconfirmed (can't port yet, can't close); TC/CMaNGOS/vMaNGOS hits conflict; DB looks suspicious but not clearly wrong; the bot's tools couldn't reach a relevant source (e.g. MCP unavailable for a DB-dependent question).
 
-**Evidence that justifies it:**
-- AC issue exists but is unconfirmed → can't port to AC yet, can't close either.
-- TC/CMaNGOS/vMaNGOS hits exist but conflict.
-- DB looks suspicious but not clearly wrong.
-- The bot's tools couldn't reach a relevant source (e.g. MCP unavailable for a DB-dependent question).
+**Action by the contributor:** tag the CC issue `Needs second opinion` or `Needs staff review` per the triaging guide.
 
 **False positives:**
 - Already tried before with the same outcome → `Unclear — close as stale`.
@@ -292,18 +268,15 @@ chain is complex — recommend a human with PTR access verify.
 
 **When it applies:** the report has prior triage comments showing previous attempts that couldn't resolve it. Limbo is a failure mode; closing is the safe action — the report can be reopened if new information appears.
 
-**Action by the contributor:** close with a note explaining the report can be reopened with new info.
+**Evidence that justifies it:** prior comments asking for more info that went unanswered; prior triage attempts that reached no conclusion; open a long time with no progress.
 
-**Evidence that justifies it:**
-- Prior comments asking for more info that went unanswered.
-- Prior triage attempts that reached no conclusion.
-- The report has been open a long time with no progress.
+**Action by the contributor:** close with a note explaining the report can be reopened with new info.
 
 **False positives:**
 - Fresh report that's just hard → `Unclear — flag for second opinion / staff review`.
 - Reporter is actively engaged and a question is pending → `Unclear — request more info from reporter` (or wait).
 
-**Confidence:** typically `Medium` — you're making a deliberate call to clear limbo, not a confident verdict on the underlying bug.
+**Confidence:** typically `Medium` — a deliberate call to clear limbo, not a confident verdict on the underlying bug.
 
 **Example snippet:**
 ```
