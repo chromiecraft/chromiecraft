@@ -17,16 +17,25 @@ jobs:
           script: |
             const fs = require('fs');
             const path = '.github/CC_SERVER_INFO.md';
-            
+
             if (!fs.existsSync(path)) {
               console.log(`File not found: ${path}`);
               return;
             }
 
-            const staticInfo = fs.readFileSync(path, 'utf8');
-
             const issueNumber = context.issue.number;
-            const originalBody = context.payload.issue.body;
+            const originalBody = context.payload.issue.body || '';
+
+            // Skip issues created from templates that apply the "Website" label
+            const labels = (context.payload.issue.labels || [])
+              .map(l => (l.name || '').toLowerCase());
+
+            if (labels.includes('website')) {
+              console.log('Skipping Website template issue');
+              return;
+            }
+
+            const staticInfo = fs.readFileSync(path, 'utf8');
 
             await github.rest.issues.update({
               ...context.issue,
