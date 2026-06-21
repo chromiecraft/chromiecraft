@@ -42,3 +42,4 @@ jobs:
               issue_number: issueNumber,
               body: `${originalBody}\n${staticInfo}`
             });
+            
