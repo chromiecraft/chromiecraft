@@ -1,5 +1,7 @@
 name: Web Bug Report
 description: Report an issue with the ChromieCraft website or web applications.
+title: "[Web]: "
+labels: ["Website"]
 body:
   - type: markdown
     attributes:
