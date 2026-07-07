@@ -1,0 +1,147 @@
+name: ChromieCraft triage assistant
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Issue number to triage
+        required: true
+      command:
+        description: Triage command to run
+        required: false
+        default: /triage
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: chromiecraft-triage-${{ github.event.issue.number || github.event.inputs.issue_number || github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  triage:
+    if: ${{ github.actor != 'ChromieCraftServer' && github.actor != 'github-actions[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build and send signed worker request
+        id: worker
+        env:
+          WORKER_URL: ${{ secrets.CHROMIE_TRIAGE_WORKER_URL }}
+          WORKER_SECRET: ${{ secrets.CHROMIE_TRIAGE_WORKER_SECRET }}
+          EVENT_NAME: ${{ github.event_name }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          WORKFLOW_COMMAND: ${{ github.event.inputs.command }}
+          WORKFLOW_ISSUE_NUMBER: ${{ github.event.inputs.issue_number }}
+        run: |
+          set -euo pipefail
+          if [ -z "${WORKER_URL}" ] || [ -z "${WORKER_SECRET}" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "Worker URL/secret is not configured."
+            exit 0
+          fi
+
+          node <<'NODE'
+          const crypto = require('node:crypto');
+          const fs = require('node:fs');
+
+          const event = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
+          let payload = {
+            event_name: process.env.EVENT_NAME,
+            action: event.action || '',
+            repository: event.repository,
+            sender: event.sender,
+            issue: event.issue || null,
+            comment: event.comment || null,
+            run_id: process.env.RUN_ID,
+            run_attempt: process.env.RUN_ATTEMPT,
+            delivery_id: process.env.GITHUB_RUN_ID || process.env.RUN_ID,
+          };
+
+          if (process.env.EVENT_NAME === 'workflow_dispatch') {
+            payload = {
+              ...payload,
+              event_name: 'issue_comment',
+              action: 'created',
+              issue_number: Number(process.env.WORKFLOW_ISSUE_NUMBER),
+              comment: {
+                id: `workflow-${process.env.RUN_ID}`,
+                body: process.env.WORKFLOW_COMMAND || '/triage',
+                user: event.sender,
+              },
+            };
+          }
+
+          const body = JSON.stringify(payload);
+          const signature = `sha256=${crypto.createHmac('sha256', process.env.WORKER_SECRET).update(body).digest('hex')}`;
+          fs.writeFileSync('triage-request.json', body);
+          fs.writeFileSync('triage-signature.txt', signature);
+          NODE
+
+          echo "configured=true" >> "$GITHUB_OUTPUT"
+
+          http_code=$(curl -sS -o triage-response.json -w '%{http_code}' \
+            -X POST "${WORKER_URL%/}/github/actions" \
+            -H "content-type: application/json" \
+            -H "x-chromie-signature: $(cat triage-signature.txt)" \
+            --data-binary @triage-request.json)
+
+          echo "http_code=${http_code}" >> "$GITHUB_OUTPUT"
+
+          if [ "$http_code" -lt 200 ] || [ "$http_code" -ge 300 ]; then
+            echo "Worker HTTP failure: $http_code"
+            cat triage-response.json || true
+            exit 1
+          fi
+
+          ok=$(jq -r '.ok // false' triage-response.json)
+          if [ "$ok" != "true" ]; then
+            echo "Worker returned failure:"
+            jq . triage-response.json || cat triage-response.json
+            exit 1
+          fi
+
+          jq . triage-response.json
+
+      - name: Report missing worker configuration
+        if: ${{ steps.worker.outputs.configured == 'false' }}
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.CHROMIECRAFTSERVER_TOKEN || github.token }}
+          script: |
+            const issue_number = context.issue.number || Number(context.payload.inputs?.issue_number || 0);
+            if (!issue_number) return;
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number,
+              body: [
+                '> Automated triage could not complete.',
+                '',
+                'Reason: triage worker is not configured for this repository.',
+                'Retry: configure `CHROMIE_TRIAGE_WORKER_URL` and `CHROMIE_TRIAGE_WORKER_SECRET`, then rerun this workflow or comment `/triage retry`.',
+              ].join('\n'),
+            });
+
+      - name: Report worker failure
+        if: ${{ failure() && steps.worker.outputs.configured == 'true' }}
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.CHROMIECRAFTSERVER_TOKEN || github.token }}
+          script: |
+            const issue_number = context.issue.number || Number(context.payload.inputs?.issue_number || 0);
+            if (!issue_number) return;
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number,
+              body: [
+                '> Automated triage could not complete.',
+                '',
+                'Reason: triage worker was unavailable or returned an error. Check the GitHub Actions run logs for the safe failure summary.',
+                'Retry: rerun this workflow or comment `/triage retry`.',
+              ].join('\n'),
+            });
