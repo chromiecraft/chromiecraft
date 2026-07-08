@@ -139,14 +139,7 @@ jobs:
           attempt=0
 
           sign_status_request() {
-            node <<'NODE'
-            const crypto = require('node:crypto');
-            const fs = require('node:fs');
-            const body = JSON.stringify({ jobId: process.env.JOB_ID });
-            const signature = `sha256=${crypto.createHmac('sha256', process.env.WORKER_SECRET).update(body).digest('hex')}`;
-            fs.writeFileSync('triage-status-request.json', body);
-            fs.writeFileSync('triage-status-signature.txt', signature);
-            NODE
+            node -e 'const crypto = require("node:crypto"); const fs = require("node:fs"); const body = JSON.stringify({ jobId: process.env.JOB_ID }); const signature = `sha256=${crypto.createHmac("sha256", process.env.WORKER_SECRET).update(body).digest("hex")}`; fs.writeFileSync("triage-status-request.json", body); fs.writeFileSync("triage-status-signature.txt", signature);'
           }
 
           while true; do
