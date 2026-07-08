@@ -107,6 +107,113 @@ jobs:
           fi
 
           jq . triage-response.json
+          job_id=$(jq -r '.jobId // empty' triage-response.json)
+          if [ -z "$job_id" ]; then
+            echo "Worker response did not include a jobId."
+            exit 1
+          fi
+          echo "job_id=${job_id}" >> "$GITHUB_OUTPUT"
+          {
+            echo "## ChromieCraft triage"
+            echo ""
+            echo "Worker accepted the request."
+            echo ""
+            echo "- Job: \`${job_id}\`"
+            echo "- Queue HTTP: \`${http_code}\`"
+            echo "- Status endpoint: \`/github/actions/status\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Wait for triage worker result
+        id: wait
+        if: ${{ steps.worker.outputs.configured == 'true' }}
+        env:
+          WORKER_URL: ${{ secrets.CHROMIE_TRIAGE_WORKER_URL }}
+          WORKER_SECRET: ${{ secrets.CHROMIE_TRIAGE_WORKER_SECRET }}
+          JOB_ID: ${{ steps.worker.outputs.job_id }}
+          TRIAGE_WAIT_SECONDS: 1800
+          TRIAGE_POLL_SECONDS: 15
+        run: |
+          set -euo pipefail
+
+          deadline=$(( $(date +%s) + TRIAGE_WAIT_SECONDS ))
+          attempt=0
+
+          sign_status_request() {
+            node <<'NODE'
+            const crypto = require('node:crypto');
+            const fs = require('node:fs');
+            const body = JSON.stringify({ jobId: process.env.JOB_ID });
+            const signature = `sha256=${crypto.createHmac('sha256', process.env.WORKER_SECRET).update(body).digest('hex')}`;
+            fs.writeFileSync('triage-status-request.json', body);
+            fs.writeFileSync('triage-status-signature.txt', signature);
+            NODE
+          }
+
+          while true; do
+            attempt=$((attempt + 1))
+            sign_status_request
+            http_code=$(curl -sS -o triage-status.json -w '%{http_code}' \
+              -X POST "${WORKER_URL%/}/github/actions/status" \
+              -H "content-type: application/json" \
+              -H "x-chromie-signature: $(cat triage-status-signature.txt)" \
+              --data-binary @triage-status-request.json)
+
+            if [ "$http_code" -lt 200 ] || [ "$http_code" -ge 300 ]; then
+              echo "Status poll HTTP failure: $http_code"
+              cat triage-status.json || true
+              exit 1
+            fi
+
+            status=$(jq -r '.status // "unknown"' triage-status.json)
+            issue=$(jq -r '.issueNumber // empty' triage-status.json)
+            echo "poll=${attempt} status=${status} issue=${issue:-unknown}"
+
+            if [ "$status" = "succeeded" ] || [ "$status" = "failed" ]; then
+              cp triage-status.json triage-status-final.json
+              break
+            fi
+
+            now=$(date +%s)
+            if [ "$now" -ge "$deadline" ]; then
+              echo "Timed out waiting for triage worker after ${TRIAGE_WAIT_SECONDS}s."
+              jq . triage-status.json || cat triage-status.json
+              exit 1
+            fi
+
+            sleep "$TRIAGE_POLL_SECONDS"
+          done
+
+          worker_ok=$(jq -r '.ok // false' triage-status-final.json)
+          worker_status=$(jq -r '.status // "unknown"' triage-status-final.json)
+          comment_url=$(jq -r '.result.result.comment.url // empty' triage-status-final.json)
+          failure_comment=$(jq -r '.result.failureComment.posted // false' triage-status-final.json)
+          echo "worker_status=${worker_status}" >> "$GITHUB_OUTPUT"
+          echo "worker_posted_failure=${failure_comment}" >> "$GITHUB_OUTPUT"
+
+          {
+            echo ""
+            echo "### Final worker result"
+            echo ""
+            echo "- Status: \`${worker_status}\`"
+            echo "- Issue: \`$(jq -r '.issueNumber // "unknown"' triage-status-final.json)\`"
+            echo "- Backend: \`$(jq -r '.result.result.backend // "n/a"' triage-status-final.json)\`"
+            echo "- Recommendation: \`$(jq -r '.result.result.recommendation // "n/a"' triage-status-final.json)\`"
+            echo "- Confidence: \`$(jq -r '.result.result.confidence // "n/a"' triage-status-final.json)\`"
+            echo "- Labels: \`$(jq -r '(.result.result.labels // []) | join(", ")' triage-status-final.json)\`"
+            echo "- Label write: \`$(jq -c '.result.result.labelWrite // null' triage-status-final.json)\`"
+            if [ -n "$comment_url" ]; then
+              echo "- Comment: ${comment_url}"
+            else
+              echo "- Comment: \`$(jq -c '.result.result.comment // .result.failureComment // null' triage-status-final.json)\`"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          jq . triage-status-final.json
+
+          if [ "$worker_ok" != "true" ]; then
+            echo "Triage worker failed."
+            exit 1
+          fi
 
       - name: Report missing worker configuration
         if: ${{ steps.worker.outputs.configured == 'false' }}
@@ -128,7 +235,7 @@ jobs:
             });
 
       - name: Report worker failure
-        if: ${{ failure() && steps.worker.outputs.configured == 'true' }}
+        if: ${{ failure() && steps.worker.outputs.configured == 'true' && steps.wait.outputs.worker_posted_failure != 'true' }}
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.CHROMIECRAFTSERVER_TOKEN || github.token }}
