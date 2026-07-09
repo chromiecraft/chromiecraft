@@ -2,7 +2,7 @@ name: ChromieCraft triage assistant
 
 on:
   issues:
-    types: [opened]
+    types: [opened, edited, reopened]
   issue_comment:
     types: [created]
   workflow_dispatch:
