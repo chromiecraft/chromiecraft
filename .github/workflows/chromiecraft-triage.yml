@@ -20,7 +20,7 @@ permissions:
   issues: write
 
 concurrency:
-  group: chromiecraft-triage
+  group: ${{ (github.actor == 'ChromieCraftServer' || github.actor == 'github-actions[bot]') && format('chromiecraft-triage-skip-{0}', github.run_id) || 'chromiecraft-triage' }}
   cancel-in-progress: false
   queue: max
 
