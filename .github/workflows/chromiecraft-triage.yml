@@ -20,7 +20,7 @@ permissions:
   issues: write
 
 concurrency:
-  group: chromiecraft-triage-${{ github.event.issue.number || github.event.inputs.issue_number || github.run_id }}
+  group: chromiecraft-triage
   cancel-in-progress: false
 
 jobs:
