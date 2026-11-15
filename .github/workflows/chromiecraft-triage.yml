@@ -44,7 +44,7 @@ jobs:
           if [ -z "${WORKER_URL}" ] || [ -z "${WORKER_SECRET}" ]; then
             echo "configured=false" >> "$GITHUB_OUTPUT"
             echo "Worker URL/secret is not configured."
-            exit 0
+            exit 1
           fi
 
           node <<'NODE'
@@ -180,9 +180,7 @@ jobs:
           worker_ok=$(jq -r '.ok // false' triage-status-final.json)
           worker_status=$(jq -r '.status // "unknown"' triage-status-final.json)
           comment_url=$(jq -r '.result.result.comment.url // empty' triage-status-final.json)
-          failure_comment=$(jq -r '.result.failureComment.posted // false' triage-status-final.json)
           echo "worker_status=${worker_status}" >> "$GITHUB_OUTPUT"
-          echo "worker_posted_failure=${failure_comment}" >> "$GITHUB_OUTPUT"
 
           {
             echo ""
@@ -208,41 +206,3 @@ jobs:
             echo "Triage worker failed."
             exit 1
           fi
-
-      - name: Report missing worker configuration
-        if: ${{ steps.worker.outputs.configured == 'false' }}
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.CHROMIECRAFTSERVER_TOKEN || github.token }}
-          script: |
-            const issue_number = context.issue.number || Number(context.payload.inputs?.issue_number || 0);
-            if (!issue_number) return;
-            await github.rest.issues.createComment({
-              ...context.repo,
-              issue_number,
-              body: [
-                '> Automated triage could not complete.',
-                '',
-                'Reason: triage worker is not configured for this repository.',
-                'Retry: configure `CHROMIE_TRIAGE_WORKER_URL` and `CHROMIE_TRIAGE_WORKER_SECRET`, then rerun this workflow or comment `/triage retry`.',
-              ].join('\n'),
-            });
-
-      - name: Report worker failure
-        if: ${{ failure() && steps.worker.outputs.configured == 'true' && steps.wait.outputs.worker_posted_failure != 'true' }}
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.CHROMIECRAFTSERVER_TOKEN || github.token }}
-          script: |
-            const issue_number = context.issue.number || Number(context.payload.inputs?.issue_number || 0);
-            if (!issue_number) return;
-            await github.rest.issues.createComment({
-              ...context.repo,
-              issue_number,
-              body: [
-                '> Automated triage could not complete.',
-                '',
-                'Reason: triage worker was unavailable or returned an error. Check the GitHub Actions run logs for the safe failure summary.',
-                'Retry: rerun this workflow or comment `/triage retry`.',
-              ].join('\n'),
-            });
